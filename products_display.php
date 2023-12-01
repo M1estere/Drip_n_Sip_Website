@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>Products Page</title>
 
-    <link rel="stylesheet" href="css/header-footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/products-page.css">
 </head>
 

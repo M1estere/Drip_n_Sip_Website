@@ -6,7 +6,6 @@
     <title>Authorize Page</title>
 
     <link rel="stylesheet" href="css/auth.css">
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <script src="js/auth.js" defer></script>
 </head>
