@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <?php include('common-systems/header.php'); ?>
+    <?php include('templates/header.php'); ?>
 
     <header class="account-main-content-wrapper">
         <div class="main-content">
@@ -43,7 +43,7 @@
         </div>
     </header>
 
-    <?php include('common-systems/footer.php'); ?>
+    <?php include('templates/footer.php'); ?>
 </body>
 
 </html>

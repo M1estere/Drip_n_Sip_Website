@@ -354,6 +354,12 @@
     max-width: 476px;
     min-height: 478px;
     max-height: 478px;
+    transition: .5s;
+    user-select: none;
+}
+
+.blogs-region .blogs-section .blog:hover {
+    transform: translateY(-7px);
 }
 
 .blogs-region .blogs-section .blog img {

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php include('common-systems/header.php'); ?>
+    <?php include('templates/header.php'); ?>
 
     <header class="photos-carousel-wrapper">
         <section aria-label="Shop Photos">
@@ -241,7 +241,7 @@
         </div>
     </header>
 
-    <?php include('common-systems/footer.php'); ?>
+    <?php include('templates/footer.php'); ?>
 </body>
 
 </html>

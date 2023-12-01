@@ -96,6 +96,7 @@ body::-webkit-scrollbar {
 .left-full-region .middle-block {
     min-height: 160px;
     max-height: 160px;
+    user-select: none;
 }
 
 .left-full-region .middle-block p {
@@ -231,6 +232,7 @@ body::-webkit-scrollbar {
 }
 
 .right-full-region .auth-forms .forms-region .input-group .input-field {
+    letter-spacing: 1.2px;
     min-height: 76px;
     max-height: 76px;
     color: black;
