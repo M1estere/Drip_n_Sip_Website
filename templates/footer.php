@@ -41,7 +41,7 @@
                     <span>Subscribe to our newsletter to keep all the info fresh</span><br><br>
 
                     <form>
-                        <input type="email" placeholder="Enter your e-mail..." name="email">
+                        <input type="email" placeholder="Enter your e-mail..." name="email" required>
                         <button type="submit">subscribe</button>
                     </form>
                 </div>
