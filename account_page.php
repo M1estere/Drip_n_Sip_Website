@@ -13,31 +13,36 @@
 <body>
     <?php include('templates/header.php'); ?>
 
-    <header class="account-main-content-wrapper">
-        <div class="main-content">
-            <div class="info-block">
-                <div class="user-photo">
-                    <img src="assets/icons/person.png">
+    <header class="main-info-wrapper">
+        <div class="main-info">
+            <div class="top-bar">
+                <div class="top-text">
+                    <span>Your Cart</span>
                 </div>
-                <div class="info">
-                    <div class="left-info">
-                        <p>Email</p>
-                        <p>Username</p>
-                        <p>Name</p>
-                    </div>
 
-                    <div class="right-info">
-                        <p>7156643@gmail.com</p>
-                        <p>Markussrae</p>
-                        <p>Ilya</p>
-                    </div>
+                <div class="sign-out-button">
+                    <button class="sign-out">sign out</button>
                 </div>
             </div>
-        </div>
-        <div class="edit-text-region">
-            <div class="temp">
-                <div class="edit-text">
-                    <a href="#">Edit Profile -></a>
+            <div class="info-block">
+                <div class="left-panel">
+                    <div class="top">
+                        <img src="assets/icons/person.png">
+                        <div class="texts">
+                            <span class="nickname">m1estere</span>
+                            <span class="email">7156643@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="bottom">
+                        <span>Personal Information</span>
+                        <span>Billing Information</span>
+                        <span>Order History</span>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+
                 </div>
             </div>
         </div>
