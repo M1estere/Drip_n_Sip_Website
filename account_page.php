@@ -44,7 +44,7 @@
             <div class="info-block">
                 <div class="left-panel">
                     <div class="top">
-                        <img src="assets/icons/person.png">
+                        <img src="assets/icons/simple/person_black.png">
                         <div class="texts">
                             <?php
                                 echo "<span class='nickname'>$username</span>";

@@ -135,18 +135,30 @@
                                 <div class="titles">
                                     <span>Positions</span>
                                     <span>Subtotal</span>
-                                    <span>Delivery Fee</span>
+                                    <span>Delivery Cost</span>
                                 </div>
                                 <div class="prices-info">
                                     <?php
+                                        $max_cost = 100;
+
                                         $amount = 0;
                                         if (isset($_SESSION['cart_size'])) {
                                             $amount = $_SESSION['cart_size'];
                                         }
 
+                                        $cost = (int)$amount * (float)$product_info['price'];
+                                        
+                                        $delivery_cost = 0;
+                                        if ($amount > 20)  {
+                                            $delivery_cost = 0;
+                                        } else if ($cost != 0) {
+                                            $delivery_cost = $max_cost / $cost;
+                                            $delivery_cost = number_format((float)$delivery_cost, 2, '.', '');
+                                        }
+                                        
                                         echo "<span>$amount</span>";
                                         echo "<span>$$whole_order_sum</span>";
-                                        echo "<span>Free</span>";
+                                        echo "<span>$$delivery_cost</span>";
                                     ?>
                                 </div>
                             </div>

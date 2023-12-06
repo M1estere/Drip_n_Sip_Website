@@ -14,10 +14,10 @@
                     </div>
 
                     <div class="icons">
-                        <img src="assets/social/facebook.png">
-                        <img src="assets/social/twitter.png">
-                        <img src="assets/social/vk.png">
-                        <img src="assets/social/youtube.png">
+                        <img src="assets/icons/colored/social/facebook.png">
+                        <img src="assets/icons/colored/social/twitter.png">
+                        <img src="assets/icons/colored/social/vk.png">
+                        <img src="assets/icons/colored/social/youtube.png">
                     </div>
                 </div>
 
@@ -54,9 +54,9 @@
                     © 2023
                 </div>
                 <div class="paying-systems">
-                    <img src="assets/paying-systems/paypal.png">
-                    <img src="assets/paying-systems/visa.png">
-                    <img src="assets/paying-systems/mastercard.png">
+                    <img src="assets/icons/colored/pay-systems/paypal.png">
+                    <img src="assets/icons/colored/pay-systems/visa.png">
+                    <img src="assets/icons/colored/pay-systems/mastercard.png">
                 </div>
             </div>
         </div>

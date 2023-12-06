@@ -31,7 +31,7 @@
                     foreach ($products as $name => $product_info) {
                         $category = lcfirst($_GET['category']);
 
-                        $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'];
+                        $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'].'&search='.$_GET['search'];
 
                         $product_name = $product_info['name'];
                         $price = '$'.$product_info['price'];
@@ -51,7 +51,7 @@
                                     <p align='center'>$product_name</p>
                                     <div class='outer'>
                                         <a href='$link'>
-                                            <img src='assets/shop.png'>
+                                            <img src='assets/icons/simple/shop_brown.png'>
                                         </a>
                                         <div class='right'>
                                             <span id='price'>$price</span>

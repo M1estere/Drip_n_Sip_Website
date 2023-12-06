@@ -6,15 +6,22 @@
 
         $result_array = array();
 
-        $category = ucfirst($category);
-        $request = "SELECT * FROM products WHERE type = '$category';";
-        
-        if ($category == NULL)
-            $request = "SELECT * FROM products;";
+        if (isset($_GET['search'])) {
+            $category = ucfirst($category);
 
-        $query = mysqli_query($server_connection, $request);
+            $request = "SELECT * FROM products WHERE type LIKE '%$category%' OR name LIKE '%$category%';";
+
+            $query = mysqli_query($server_connection, $request);
+        } else {
+            $category = ucfirst($category);
+            $request = "SELECT * FROM products WHERE type = '$category';";
+            
+            if ($category == NULL)
+                $request = "SELECT * FROM products;";
+
+            $query = mysqli_query($server_connection, $request);
+        }
         if ($query) {
-
             $counter = 0;
             while ($product = mysqli_fetch_array($query)) {
                 $product_name = 'Product '.$counter;

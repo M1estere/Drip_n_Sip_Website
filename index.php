@@ -14,9 +14,7 @@
 </head>
 
 <body>
-    <?php
-        session_start();
-    ?>
+    <?php session_start(); ?>
     <?php include('server/check_for_cart.php');?>
     <?php include('templates/header.php');?>
 
@@ -28,25 +26,25 @@
 
                 <ul data-slides>
                     <li class="slide" data-active>
-                        <img src="assets/carousel-images/shop-1.jpg" alt="Shop 1">
+                        <img src="assets/carousel/shop-1.jpg" alt="Shop 1">
                     </li>
                     <li class="slide">
-                        <img src="assets/carousel-images/shop-2.webp" alt="Shop 2">
+                        <img src="assets/carousel/shop-2.webp" alt="Shop 2">
                     </li>
                     <li class="slide">
-                        <img src="assets/carousel-images/shop-3.jpg" alt="Shop 3">
+                        <img src="assets/carousel/shop-3.jpg" alt="Shop 3">
                     </li>
                     <li class="slide">
-                        <img src="assets/carousel-images/shop-4.jpg" alt="Shop 3">
+                        <img src="assets/carousel/shop-4.jpg" alt="Shop 3">
                     </li>
                     <li class="slide">
-                        <img src="assets/carousel-images/shop-5.jpg" alt="Shop 3">
+                        <img src="assets/carousel/shop-5.jpg" alt="Shop 3">
                     </li>
                     <li class="slide">
-                        <img src="assets/carousel-images/shop-6.jpg" alt="Shop 3">
+                        <img src="assets/carousel/shop-6.jpg" alt="Shop 3">
                     </li>
                     <li class="slide">
-                        <img src="assets/carousel-images/shop-7.png" alt="Shop 3">
+                        <img src="assets/carousel/shop-7.png" alt="Shop 3">
                     </li>
                 </ul>
             </div>
@@ -57,7 +55,7 @@
         <div class="notes-region">
             <div class="note-block">
                 <div class="image">
-                    <img src="assets/notes-icons/plane.png">
+                    <img src="assets/icons/simple/plane_brown.png">
                 </div>
                 <div class="info">
                     <div class="title">
@@ -71,7 +69,7 @@
 
             <div class="note-block">
                 <div class="image">
-                    <img src="assets/notes-icons/gift.png">
+                    <img src="assets/icons/simple/gift_brown.png">
                 </div>
                 <div class="info">
                     <div class="title">
@@ -85,7 +83,7 @@
 
             <div class="note-block">
                 <div class="image">
-                    <img src="assets/notes-icons/sale.png">
+                    <img src="assets/icons/simple/sale_brown.png">
                 </div>
                 <div class="info">
                     <div class="title">
@@ -99,7 +97,7 @@
 
             <div class="note-block">
                 <div class="image">
-                    <img src="assets/notes-icons/service.png">
+                    <img src="assets/icons/simple/service_brown.png">
                 </div>
                 <div class="info">
                     <div class="title">
@@ -186,7 +184,7 @@
                                     <p align='center'>$name</p>
                                     <div class='outer'>
                                         <a href='$link'>
-                                            <img src='assets/shop.png'>
+                                            <img src='assets/icons/simple/shop_brown.png'>
                                         </a>
                                         <div class='right'>
                                             <span id='price'>$price</span>
@@ -223,12 +221,15 @@
                                 </div>
                                 <div class='info'>
                                     <p align='center'>$name</p>
-                                        <div>
-                                            <a href='$link'>
-                                                <img src='assets/shop.png'>
-                                            </a>
-                                            <span>$price</span>
+                                    <div class='outer'>
+                                        <a href='$link'>
+                                            <img src='assets/icons/simple/shop_brown.png'>
+                                        </a>
+                                        <div class='right'>
+                                            <span id='price'>$price</span>
+                                            <span id='calories'>{$calories}cal</span>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         ";
@@ -259,12 +260,15 @@
                                 </div>
                                 <div class='info'>
                                     <p align='center'>$name</p>
-                                        <div>
-                                            <a href='$link'>
-                                                <img src='assets/shop.png'>
-                                            </a>
-                                            <span>$price</span>
+                                    <div class='outer'>
+                                        <a href='$link'>
+                                            <img src='assets/icons/simple/shop_brown.png'>
+                                        </a>
+                                        <div class='right'>
+                                            <span id='price'>$price</span>
+                                            <span id='calories'>{$calories}cal</span>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         ";

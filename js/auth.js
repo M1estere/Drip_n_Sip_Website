@@ -1,13 +1,14 @@
 const switchTime = 6
 
 const head = document.getElementById('head')
-const images = ['assets/carousel-images/shop-2.webp',
-    'assets/carousel-images/shop-3.jpg',
-    'assets/carousel-images/shop-1.jpg',
-    'assets/carousel-images/shop-4.jpg',
-    'assets/carousel-images/shop-5.jpg',
-    'assets/carousel-images/shop-6.jpg',
-    'assets/carousel-images/shop-7.png'
+const images = [
+    'assets/carousel/shop-2.webp',
+    'assets/carousel/shop-4.jpg',
+    'assets/carousel/shop-3.jpg',
+    'assets/carousel/shop-6.jpg',
+    'assets/carousel/shop-1.jpg',
+    'assets/carousel/shop-7.png',
+    'assets/carousel/shop-5.jpg',
 ]
 
 let timer = setInterval(changeImageNoButton, switchTime * 1000)

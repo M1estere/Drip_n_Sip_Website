@@ -17,7 +17,7 @@
     <div class="top-white-bar">
         <div class="customer-support-region">
             <div class="support-image">
-                <img src="assets/icons/service-black.png">
+                <img src="assets/icons/simple/service_black.png">
             </div>
             <div class="support-texts-region">
                 Customer Support<br> 123-456-7890
@@ -33,14 +33,14 @@
         <div class="account-shopping-cart-region">
             <div class="person-image">
                 <a href="account_page.php">
-                    <img src="assets/icons/person.png">
+                    <img src="assets/icons/simple/person_black.png">
                 </a>
             </div>
 
             <div class="shopping-cart-region">
                 <div class="shopping-cart">
                     <a href="shopping_cart.php">
-                        <img src="assets/icons/shop-black.png">
+                        <img src="assets/icons/simple/shop_black.png">
                     </a>
                 </div>
 
@@ -70,10 +70,12 @@
         </div>
 
         <div class="search-container">
-            <form>
-                <input type="text" placeholder="Search..." name="product_search">
+            <form method="GET" action="products_display.php">
+                <input type="text" placeholder="Search..." name="category" required minLength="1">
+                <input hidden type="text" placeholder="Search..." name="search" value="true">
+                
                 <button type="submit">
-                        <img src="assets/search.png" class="search-button">
+                    <img src="assets/icons/simple/search_black.png" class="search-button">
                 </button>
             </form>
         </div>

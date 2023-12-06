@@ -56,7 +56,7 @@ function controlBlock(block, state) {
 
 function controlButton(button, state) {
     if (state) {
-        button.style.transform = "translateX(5px)"
+        button.style.transform = "translateX(10px)"
         button.style.color = "#e2aa6a"
     } else {
         button.style.transform = null

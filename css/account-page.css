@@ -7,6 +7,7 @@
 .main-info {
     margin-top: 70px;
     min-height: 620px;
+    max-height: 820px;
     min-width: 100%;
     max-width: 100%;
 }
@@ -70,14 +71,13 @@
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .main-info .info-block .left-panel .top {
     min-width: 100%;
     max-width: 100%;
-    min-height: 280px;
-    max-height: 280px;
+    min-height: 250px;
+    max-height: 250px;
 }
 
 .main-info .info-block .left-panel .top .texts {
@@ -107,8 +107,8 @@
     gap: 15px;
     min-width: 100%;
     max-width: 100%;
-    min-height: 270px;
-    max-height: 270px;
+    min-height: 180px;
+    max-height: 180px;
 }
 
 .main-info .info-block .left-panel .bottom span {
@@ -122,7 +122,7 @@
 .main-info .info-block .left-panel .bottom span:hover {
     cursor: pointer;
     color: #e2aa6a;
-    transform: translateX(5px);
+    transform: translateX(10px);
 }
 
 .main-info .info-block .right-panel {
@@ -131,8 +131,6 @@
     gap: 25px;
     min-width: 825px;
     max-width: 825px;
-    min-height: 100%;
-    max-height: 100%;
 }
 
 .main-info .info-block .right-panel .common-info {
@@ -166,7 +164,7 @@
 .main-info .info-block .right-panel .blocks-info {
     display: grid;
     gap: 15px;
-    grid-template-columns: 391px 391px;
+    grid-template-columns: 405px 405px;
     min-height: 445px;
     max-height: 445px;
     min-width: 100%;

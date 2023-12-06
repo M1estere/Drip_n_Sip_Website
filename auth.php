@@ -13,13 +13,13 @@
 <body>
     <header class="main-region">
         <div class="left-wrapper">
-            <div id="head" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/carousel-images/shop-1.jpg'); background-repeat: no-repeat; background-size: cover;">
+            <div id="head" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/carousel/shop-1.jpg'); background-repeat: no-repeat; background-size: cover;">
             </div>
             <div id="bg" style="background-color: black;">
             </div>
             <div class="left-full-region">
                 <div class="top-block">
-                    <a href="#"><img src="assets/person-white.png"></a>
+                    <a href="#"><img src="assets/icons/simple/person_white.png"></a>
                 </div>
 
                 <div class="middle-block"><br>
@@ -28,10 +28,10 @@
                 </div>
 
                 <div class="bottom-block">
-                    <img src="assets/social/facebook.png">
-                    <img src="assets/social/twitter.png">
-                    <img src="assets/social/vk.png">
-                    <img src="assets/social/youtube.png">
+                    <img src="assets/icons/colored/social/facebook.png">
+                    <img src="assets/icons/colored/social/twitter.png">
+                    <img src="assets/icons/colored/social/vk.png">
+                    <img src="assets/icons/colored/social/youtube.png">
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="right-wrapper">
             <div class="right-full-region">
                 <div class="logo-region">
-                    <img src="assets/blogs/shop-1.jpg">
+                    <img src="assets/blogs/designs.jpg">
                 </div>
 
                 <div class="auth-forms">
@@ -56,7 +56,6 @@
 
                         session_start();
                         session_destroy();
-
                         authenticate($_POST);
 
                         function authenticate($data) {
@@ -72,21 +71,20 @@
                             global $reg_error;
 
                             if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                                $reg_error = "Enter a valid email";
+                                $reg_error = 'Enter a valid email';
                             }
 
-                            // UNCOMMENT LATER !!!!!!!!!!!!!!!!!!!
-                            // if (strlen(trim($data['password'])) < 8) {
-                            //     $reg_error = "Password is too short";
-                            // }
+                            if (trim($data['password']) < 4) {
+                                $reg_error = 'Enter a correct password';
+                            }
 
                             if (strlen($reg_error) == 0) {
-                                $username = $data['username'];
-                                $name = $data['name'];
-                                $email = $data['email'];
-                                $password = $data['password'];
+                                $username = trim($data['username']);
+                                $name = trim($data['name']);
+                                $email = trim($data['email']);
+                                $password = trim($data['password']);
 
-                                $request = "SELECT * FROM clients WHERE username = '{$username}' or name = '{$name}'";
+                                $request = "SELECT * FROM clients WHERE username = '{$username}' or name = '{$email}'";
                                 $query = mysqli_query($server_connection, $request);
 
                                 $user = mysqli_fetch_array($query);
@@ -101,9 +99,10 @@
                                         $user = mysqli_fetch_array($query);
                                         if ($user) {
                                             session_start();
-                                            $_SESSION['current_user_id'] = $user['id'];
-                                            $_SESSION['current_user_username'] = $user['username'];
-                                            $_SESSION['current_user_name'] = $user['name'];
+                                            $_SESSION['id'] = $user['id'];
+                                            $_SESSION['username'] = $user['username'];
+                                            $_SESSION['name'] = $user['name'];
+                                            $_SESSION['email'] = $user['email'];
     
                                             $_POST = array();
                                             header('location: /../index.php');
@@ -124,8 +123,8 @@
                             global $server_connection;
                             global $log_error;
 
-                            $username = $data['username'];
-                            $password = $data['password'];
+                            $username = trim($data['username']);
+                            $password = trim($data['password']);
                             
                             $request = "SELECT * FROM clients WHERE username = '{$username}';";
                             $query = mysqli_query($server_connection, $request);
@@ -143,8 +142,6 @@
                                     $_SESSION['email'] = $user['email'];
     
                                     $_POST = array();
-
-                                    var_dump($_SESSION);
                                     header('Location: index.php');
                                     die;
                                 } else {
@@ -158,10 +155,11 @@
 
                     <div class="forms-region">
                         <form method="POST" id="register" class="input-group">
-                            <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required>
+                            <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required value=''>
                             <input type="text" name="name" class="input-field" placeholder="Name" minlength="3" required>
                             <input type="email" name="email" class="input-field" placeholder="E-mail" required>
                             <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
+
                             <button type="submit" class="submit-button">SIGN UP</button>
                         
                             <?php
@@ -174,6 +172,7 @@
                         <form method="POST" id="login" class="input-group">
                             <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required>
                             <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
+                            
                             <button type="submit" class="submit-button">LOGIN</button>
 
                             <?php
