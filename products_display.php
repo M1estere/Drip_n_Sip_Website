@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    <?php
+        session_start();
+    ?>
+    <?php include('server/check_for_cart.php');?>
     <?php include('templates/header.php'); ?>
 
     <header class="main-info-wrapper">
@@ -20,31 +24,45 @@
             </div>
 
             <div class="products-display">
-                <div class="prod-page">
-                    <div class="image">
-                        <img src="assets/coffee-products/coffee-default.png">
-                    </div>
-                    <div class="info">
-                        <p align="center">Irish Coffee</p>
-                        <div>
-                            <img src="assets/shop.png">
-                            <span>$100</span>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    include 'server/search_product.php';
 
-                <div class="prod-page">
-                    <div class="image">
-                        <img src="assets/coffee-products/coffee-default.png">
-                    </div>
-                    <div class="info">
-                        <p align="center">Irish Coffee</p>
-                        <div>
-                            <img src="assets/shop.png">
-                            <span>$100</span>
-                        </div>
-                    </div>
-                </div>
+                    $products = search($_GET['category']);
+                    foreach ($products as $name => $product_info) {
+                        $category = lcfirst($_GET['category']);
+
+                        $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'];
+
+                        $product_name = $product_info['name'];
+                        $price = '$'.$product_info['price'];
+                        $calories = $product_info['calories'];
+                        $picture_path = 'assets/coffee-products/'.$product_info['picture'];
+
+                        $temp_name = strtolower($product_name);
+                        $temp_name = str_replace(' ', '_', $temp_name);
+                        $link = $link.'&name='.$temp_name;
+
+                        echo "
+                            <div class='prod-page'>
+                                <div class='image'>
+                                    <img src='$picture_path'>
+                                </div>
+                                <div class='info'>
+                                    <p align='center'>$product_name</p>
+                                    <div class='outer'>
+                                        <a href='$link'>
+                                            <img src='assets/shop.png'>
+                                        </a>
+                                        <div class='right'>
+                                            <span id='price'>$price</span>
+                                            <span id='calories'>{$calories}cal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ";
+                    }
+                ?>
             </div>
         </div>
     </header>

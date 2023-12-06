@@ -25,15 +25,15 @@
                     <p>information</p>
                     <div><a id="open-about-button">About Us</a></div>
                     <div><a id="open-deliv-button">Delivery Information</a></div>
-                    <div><a href="#">Privacy Policy</a></div>
+                    <div><a id="open-contacts-button">Privacy Policy</a></div>
                     <div><a id="open-contacts-button">Contact Us</a></div>
                 </div>
 
                 <div class="account-region">
                     <p>my account</p>
-                    <div><a href="#">My Account</a></div>
-                    <div><a href="#">Order History</a></div>
-                    <div><a href="#">Newsletter</a></div>
+                    <div><a href="account_page.php">My Account</a></div>
+                    <div><a href="account_page.php">Order History</a></div>
+                    <div><a href="account_page.php">Newsletter</a></div>
                 </div>
 
                 <div class="newsletter-region">

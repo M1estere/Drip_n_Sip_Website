@@ -65,7 +65,6 @@
 }
 
 .cart-table {
-    border-collapse: collapse;
     max-width: 100%;
     min-width: 100%;
 }
@@ -76,7 +75,7 @@
 
 .cart-table td {
     font-size: 24px;
-    padding: 10px 100px 5px 0px;
+    padding: 15px 100px 5px 0px;
 }
 
 .cart-table .last-col {
@@ -92,26 +91,25 @@
 }
 
 .cart-table .product-section img {
-    min-width: 80px;
-    max-width: 80px;
-    min-height: 80px;
-    max-height: 80px;
+    min-width: 70px;
+    max-width: 70px;
+    min-height: 70px;
+    max-height: 70px;
     border: none;
     border-radius: 15px;
     object-fit: cover;
 }
 
-.cart-table .product-section .info-texts {}
-
-.cart-table .product-section .info-texts p {
-    line-height: 0px;
-    font-size: 24px;
+.cart-table .product-section .info-texts .title {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 18px;
     font-weight: bolder;
     letter-spacing: 1.5px;
     font-family: sans-serif;
 }
 
-.cart-table .product-section .info-texts span {
+.cart-table .product-section .info-texts .regular {
     font-size: 20px;
     font-weight: lighter;
     letter-spacing: 1.5px;
@@ -145,6 +143,11 @@
 }
 
 .cart-table .amount-changer .minus span,
+.cart-table .amount-changer a {
+    text-decoration: none;
+}
+
+.cart-table .amount-changer .minus span,
 .cart-table .amount-changer .plus span {
     font-weight: lighter;
     user-select: none;
@@ -164,6 +167,10 @@
     max-width: 35px;
     min-height: 55px;
     max-height: 55px;
+}
+
+.cart-table .last-col a {
+    text-decoration: none;
 }
 
 .cart-table .delete-button .delete {

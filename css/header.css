@@ -17,6 +17,8 @@ body::-webkit-scrollbar {
 }
 
 .top-black-wrapper {
+    min-width: 100%;
+    max-width: 100%;
     margin: 0;
     padding-left: 200px;
     padding-right: 200px;
@@ -24,12 +26,16 @@ body::-webkit-scrollbar {
 }
 
 .top-white-wrapper {
+    min-width: 100%;
+    max-width: 100%;
     margin: 0;
     padding-left: 200px;
     padding-right: 200px;
 }
 
 .nav-bar-wrapper {
+    min-width: 100%;
+    max-width: 100%;
     margin: 0;
     padding-left: 200px;
     padding-right: 200px;
@@ -125,11 +131,13 @@ body::-webkit-scrollbar {
     padding-right: 10px;
     box-sizing: content-box;
     border-right: 2px black solid;
+    transition: .2s;
 }
 
 .top-white-bar .account-shopping-cart-region .person-image img:hover,
 .top-white-bar .account-shopping-cart-region .shopping-cart img:hover {
     cursor: pointer;
+    opacity: .5;
 }
 
 .top-white-bar .account-shopping-cart-region .shopping-cart img {
@@ -137,6 +145,7 @@ body::-webkit-scrollbar {
     height: 70px;
     object-fit: cover;
     margin-left: 10px;
+    transition: .2s;
 }
 
 .top-white-bar .account-shopping-cart-region .shopping-cart-region {

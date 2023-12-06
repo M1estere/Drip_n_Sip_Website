@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <header class="top-black-wrapper">
     <div class="top-black-bar">
         <div>
@@ -29,20 +32,27 @@
 
         <div class="account-shopping-cart-region">
             <div class="person-image">
-                <a href="#">
+                <a href="account_page.php">
                     <img src="assets/icons/person.png">
                 </a>
             </div>
 
             <div class="shopping-cart-region">
                 <div class="shopping-cart">
-                    <a href="#">
+                    <a href="shopping_cart.php">
                         <img src="assets/icons/shop-black.png">
                     </a>
                 </div>
 
                 <div class="shopping-text">
-                    Shopping Cart (0 items)
+                    <?php
+                        $amount = 0;
+                        if (isset($_SESSION['cart_size'])) {
+                            $amount = $_SESSION['cart_size'];
+                        }
+
+                        echo "Shopping Cart ($amount items)";
+                    ?>
                 </div>
             </div>
         </div>
@@ -52,11 +62,11 @@
 <header class="nav-bar-wrapper">
     <div class="nav-bar-full">
         <div class="nav-menu">
-            <div><a href="#">home</a></div>
-            <div><a href="#">iced mocha</a></div>
-            <div><a href="#">espresso</a></div>
-            <div><a href="#">cappuccino</a></div>
-            <div><a href="#">more</a></div>
+            <div><a href="index.php">home</a></div>
+            <div><a href="products_display.php?category=mocha">iced mocha</a></div>
+            <div><a href="products_display.php?category=espresso">espresso</a></div>
+            <div><a href="products_display.php?category=cappuccino">cappuccino</a></div>
+            <div><a href="products_display.php">more</a></div>
         </div>
 
         <div class="search-container">

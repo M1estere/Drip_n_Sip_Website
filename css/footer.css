@@ -6,7 +6,8 @@ footer {
 
 footer .main-footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 105px;
     padding-top: 50px;
     padding-bottom: 50px;
     max-height: 390px;

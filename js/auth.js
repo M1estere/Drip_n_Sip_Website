@@ -11,7 +11,6 @@ const images = ['assets/carousel-images/shop-2.webp',
 ]
 
 let timer = setInterval(changeImageNoButton, switchTime * 1000)
-
 let i = 0
 
 function changeImageNoButton() {
@@ -31,7 +30,11 @@ let reg_field = document.getElementById("register")
 let log_button = document.getElementById("login-button")
 let reg_button = document.getElementById("register-button")
 
-register()
+let t = localStorage.getItem("lastActiveElement");
+if (t == null || t == 0)
+    register()
+else
+    login()
 
 function register() {
     controlButton(log_button, false)
@@ -39,6 +42,8 @@ function register() {
 
     controlFields(reg_field, true)
     controlFields(login_field, false)
+
+    localStorage.setItem("lastActiveElement", 0);
 }
 
 function login() {
@@ -47,6 +52,8 @@ function login() {
 
     controlFields(reg_field, false)
     controlFields(login_field, true)
+
+    localStorage.setItem("lastActiveElement", 1);
 }
 
 function controlFields(fields, state) {

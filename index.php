@@ -10,16 +10,22 @@
     <link rel="stylesheet" href="css/footer.css">
 
     <script src="js/carousel.js" defer></script>
+    <script src="js/top_products.js" defer></script>
 </head>
 
 <body>
-    <?php include('templates/header.php'); ?>
+    <?php
+        session_start();
+    ?>
+    <?php include('server/check_for_cart.php');?>
+    <?php include('templates/header.php');?>
 
     <header class="photos-carousel-wrapper">
         <section aria-label="Shop Photos">
             <div class="image-carousel" data-carousel>
                 <button class="carousel-button prev" data-carousel-button hidden>&#8656</button>
                 <button class="carousel-button next" data-carousel-button hidden>&#8658</button>
+
                 <ul data-slides>
                     <li class="slide" data-active>
                         <img src="assets/carousel-images/shop-1.jpg" alt="Shop 1">
@@ -111,21 +117,29 @@
             <p align="center">Top Categories</p>
 
             <div class="cat-buttons-region">
-                <div class="cat-button" onclick="alert('featured clicked')" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-1.webp'); background-repeat: no-repeat; background-size: cover;">
-                    mocha
-                    <hr style="height: 5px; width: 10%; border: none; background-color: white;">
-                    <p>View More</p>
-                </div>
-                <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-2.jpg');  background-repeat: no-repeat; background-size: cover;">
-                    espresso
-                    <hr style="height: 5px; width: 10%; border: none; background-color: white;">
-                    <p>View More</p>
-                </div>
-                <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-3.jpg');  background-repeat: no-repeat; background-size: cover;">
-                    cappuccino
-                    <hr style="height: 5px; width: 10%; border: none; background-color: white;">
-                    <p>View More</p>
-                </div>
+                <a href="products_display.php?category=mocha">
+                    <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-1.webp'); background-repeat: no-repeat; background-size: cover;">
+                        mocha
+                        <hr style="height: 5px; width: 10%; border: none; background-color: white;">
+                        <p>View More</p>
+                    </div>
+                </a>
+
+                <a href="products_display.php?category=latte">
+                    <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-2.jpg');  background-repeat: no-repeat; background-size: cover;">
+                        latte
+                        <hr style="height: 5px; width: 10%; border: none; background-color: white;">
+                        <p>View More</p>
+                    </div>
+                </a>
+
+                <a href="products_display.php?category=cappuccino">
+                    <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-3.jpg');  background-repeat: no-repeat; background-size: cover;">
+                        cappuccino
+                        <hr style="height: 5px; width: 10%; border: none; background-color: white;">
+                        <p>View More</p>
+                    </div>
+                </a>
             </div>
         </div>
     </header>
@@ -135,65 +149,127 @@
             <p align="center">Top Products</p>
 
             <div class="prod-buttons-region">
-                <div class="prod-button" onclick="alert('featured clicked')">
+                <div id="featured-button" class="prod-button" onclick="openFeatured()">
                     featured
                 </div>
-                <div class="prod-button">
+                <div id="hottest-button" class="prod-button" onclick="openHottest()">
                     hottest
                 </div>
-                <div class="prod-button">
+                <div id="best-button" class="prod-button" onclick="openBest()">
                     bestseller
                 </div>
             </div>
-            <div class="prod-region">
-                <div class="prod-page">
-                    <div class="image">
-                        <img src="assets/coffee-products/coffee-default.png">
-                    </div>
-                    <div class="info">
-                        <p align="center">Irish Coffee</p>
-                        <div>
-                            <img src="assets/shop.png">
-                            <span>$100</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="prod-page">
-                    <div class="image">
-                        <img src="assets/coffee-products/mocha/mocha-4.png">
-                    </div>
-                    <div class="info">
-                        <p align="center">Mocha</p>
-                        <div>
-                            <img src="assets/shop.png">
-                            <span>$100</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="prod-page">
-                    <div class="image">
-                        <img src="assets/coffee-products/latte/latte-2.png">
-                    </div>
-                    <div class="info">
-                        <p align="center">Espresso</p>
-                        <div>
-                            <img src="assets/shop.png">
-                            <span>$100</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="prod-page">
-                    <div class="image">
-                        <img src="assets/coffee-products/espresso/espresso-2.png">
-                    </div>
-                    <div class="info">
-                        <p align="center">Matcha</p>
-                        <div>
-                            <img src="assets/shop.png">
-                            <span>$200</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="prod-region" id="featured">
+                <?php
+                    include 'server/get_random_products.php';
+
+                    $products = get_products(4);
+                    foreach ($products as $name => $product_info) {
+                        $link = 'index.php?product_id='.$product_info['id'];
+
+                        $category = $product_info['category'];
+                        $name = $product_info['name'];
+                        $price = '$'.$product_info['price'];
+                        $calories = $product_info['calories'];
+                        $picture_path = 'assets/coffee-products/'.$product_info['picture'];
+
+                        $temp_name = strtolower($name);
+                        $temp_name = str_replace(' ', '_', $temp_name);
+                        $link = $link.'&name='.$temp_name;
+
+                        echo "
+                            <div class='prod-page'>
+                                <div class='image'>
+                                    <img src='$picture_path'>
+                                </div>
+                                <div class='info'>
+                                    <p align='center'>$name</p>
+                                    <div class='outer'>
+                                        <a href='$link'>
+                                            <img src='assets/shop.png'>
+                                        </a>
+                                        <div class='right'>
+                                            <span id='price'>$price</span>
+                                            <span id='calories'>{$calories}cal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ";
+                    }
+                ?>
+            </div>
+
+            <div class="prod-region" id="hottest">
+                <?php
+                    $products = get_products(4);
+                    foreach ($products as $name => $product_info) {
+                        $link = 'index.php?product_id='.$product_info['id'];
+
+                        $category = $product_info['category'];
+                        $name = $product_info['name'];
+                        $price = '$'.$product_info['price'];
+                        $calories = $product_info['calories'];
+                        $picture_path = 'assets/coffee-products/'.$product_info['picture'];
+
+                        $temp_name = strtolower($name);
+                        $temp_name = str_replace(' ', '_', $temp_name);
+                        $link = $link.'&name='.$temp_name;
+
+                        echo "
+                            <div class='prod-page'>
+                                <div class='image'>
+                                    <img src='$picture_path'>
+                                </div>
+                                <div class='info'>
+                                    <p align='center'>$name</p>
+                                        <div>
+                                            <a href='$link'>
+                                                <img src='assets/shop.png'>
+                                            </a>
+                                            <span>$price</span>
+                                        </div>
+                                </div>
+                            </div>
+                        ";
+                    }
+                ?>
+            </div>
+
+            <div class="prod-region" id="bestseller">
+                <?php
+                    $products = get_products(4);
+                    foreach ($products as $name => $product_info) {
+                        $link = 'index.php?product_id='.$product_info['id'];
+
+                        $category = $product_info['category'];
+                        $name = $product_info['name'];
+                        $price = '$'.$product_info['price'];
+                        $calories = $product_info['calories'];
+                        $picture_path = 'assets/coffee-products/'.$product_info['picture'];
+
+                        $temp_name = strtolower($name);
+                        $temp_name = str_replace(' ', '_', $temp_name);
+                        $link = $link.'&name='.$temp_name;
+
+                        echo "
+                            <div class='prod-page'>
+                                <div class='image'>
+                                    <img src='$picture_path'>
+                                </div>
+                                <div class='info'>
+                                    <p align='center'>$name</p>
+                                        <div>
+                                            <a href='$link'>
+                                                <img src='assets/shop.png'>
+                                            </a>
+                                            <span>$price</span>
+                                        </div>
+                                </div>
+                            </div>
+                        ";
+                    }
+                ?>
             </div>
         </div>
     </header>
@@ -213,30 +289,28 @@
             <p align="center">Latest Blogs</p>
 
             <div class="blogs-section">
-                <div class="blog">
-                    <img src="assets/blogs/shop-1.jpg" alt="Blog 1">
-                    <div class="info">
-                        <p>Lorem Ipsum Dolor</p>
-                        <span class="colored">05 December 2020</span><br>
-                        <span class="reg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</span>
-                    </div>
-                </div>
-                <div class="blog">
-                    <img src="assets/blogs/shop-2.jpg" alt="Blog 1">
-                    <div class="info">
-                        <p>Lorem Ipsum Dolor</p>
-                        <span class="colored">05 December 2020</span><br>
-                        <span class="reg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</span>
-                    </div>
-                </div>
-                <div class="blog">
-                    <img src="assets/blogs/shop-3.jpg" alt="Blog 1">
-                    <div class="info">
-                        <p>Lorem Ipsum Dolor</p>
-                        <span class="colored">05 December 2020</span><br>
-                        <span class="reg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</span>
-                    </div>
-                </div>
+                <?php
+                    include 'server/get_blogs.php';
+
+                    $blogs = blogs();
+                    foreach ($blogs as $num => $blog_info) {
+                        $text = $blog_info['text'];
+                        $picture_path = 'assets/'.$blog_info['picture'];
+                        $title = $blog_info['title'];
+                        $blog_date = date('d F Y', strtotime($blog_info['date']));
+
+                        echo "
+                            <div class='blog'>
+                                <img src=$picture_path>
+                                <div class='info'>
+                                    <p>$title</p>
+                                    <span class='colored'>$blog_date</span><br>
+                                    <span class='reg'>$text</span>
+                                </div>
+                            </div>
+                        ";
+                    }
+                ?>
             </div>
         </div>
     </header>

@@ -225,10 +225,10 @@ body::-webkit-scrollbar {
 }
 
 #register {
-    opacity: 1;
-    position: relative;
+    opacity: 0;
+    position: absolute;
     transition: .2s;
-    z-index: 1;
+    z-index: -3;
 }
 
 .right-full-region .auth-forms .forms-region .input-group .input-field {
@@ -266,4 +266,13 @@ body::-webkit-scrollbar {
 .right-full-region .auth-forms .forms-region .input-group .submit-button:hover {
     cursor: pointer;
     transform: scale(1.05);
+}
+
+.right-full-region .auth-forms .forms-region .error {
+    color: red;
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-family: sans-serif;
 }

@@ -38,6 +38,10 @@ function enableHistInfoFunc() {
     controlButton(histInfoBtn, true)
 }
 
+function signOut() {
+    location.href = "auth.php";
+}
+
 function controlBlock(block, state) {
     if (state) {
         block.style.opacity = 1
