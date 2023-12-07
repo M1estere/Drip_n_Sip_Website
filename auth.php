@@ -19,19 +19,19 @@
             </div>
             <div class="left-full-region">
                 <div class="top-block">
-                    <a href="#"><img src="assets/icons/simple/person_white.png"></a>
+                    <a href="index.php"><img src="assets/logo.png"></a>
                 </div>
 
                 <div class="middle-block"><br>
-                    <p>Welcome to {shopName}</p>
+                    <p>Welcome to Drip & Sip</p>
                     <span>Lorem ipsum inspiring people</span>
                 </div>
 
                 <div class="bottom-block">
-                    <img src="assets/icons/colored/social/facebook.png">
-                    <img src="assets/icons/colored/social/twitter.png">
-                    <img src="assets/icons/colored/social/vk.png">
-                    <img src="assets/icons/colored/social/youtube.png">
+                    <a href="https://www.facebook.com/"><img src="assets/icons/colored/social/facebook.png"></a>
+                    <a href="https://twitter.com/Ilya_Solov23"><img src="assets/icons/colored/social/twitter.png"></a>
+                    <a href="https://vk.com/m1estere"><img src="assets/icons/colored/social/vk.png"></a>
+                    <a href="https://www.youtube.com/channel/UCi3J1FxEFC-6fIig5IvjbSg"><img src="assets/icons/colored/social/youtube.png"></a>
                 </div>
             </div>
         </div>
@@ -126,6 +126,12 @@
                             $username = trim($data['username']);
                             $password = trim($data['password']);
                             
+                            if ($username == 'admin' && $password == 'admin') {
+                                $_POST = array();
+                                header('Location: admin/admin_panel.php');
+                                die;
+                            }
+
                             $request = "SELECT * FROM clients WHERE username = '{$username}';";
                             $query = mysqli_query($server_connection, $request);
 
@@ -153,35 +159,35 @@
                         }
                     ?>
 
-                    <div class="forms-region">
-                        <form method="POST" id="register" class="input-group">
-                            <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required value=''>
-                            <input type="text" name="name" class="input-field" placeholder="Name" minlength="3" required>
-                            <input type="email" name="email" class="input-field" placeholder="E-mail" required>
-                            <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
+                        <div class="forms-region">
+                            <form method="POST" id="register" class="input-group">
+                                <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required value=''>
+                                <input type="text" name="name" class="input-field" placeholder="Name" minlength="3" required>
+                                <input type="email" name="email" class="input-field" placeholder="E-mail" required>
+                                <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
 
-                            <button type="submit" class="submit-button">SIGN UP</button>
-                        
-                            <?php
+                                <button type="submit" class="submit-button">SIGN UP</button>
+
+                                <?php
                                 echo "
                                     <span align='center' class='error'>$reg_error</span>
                                 ";
                             ?>
-                        </form>
+                            </form>
 
-                        <form method="POST" id="login" class="input-group">
-                            <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required>
-                            <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
-                            
-                            <button type="submit" class="submit-button">LOGIN</button>
+                            <form method="POST" id="login" class="input-group">
+                                <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required>
+                                <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
 
-                            <?php
+                                <button type="submit" class="submit-button">LOGIN</button>
+
+                                <?php
                                 echo "
                                     <span align='center' class='error'>$log_error</span>
                                 ";
                             ?>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
                 </div>
             </div>
         </div>

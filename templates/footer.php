@@ -14,10 +14,10 @@
                     </div>
 
                     <div class="icons">
-                        <img src="assets/icons/colored/social/facebook.png">
-                        <img src="assets/icons/colored/social/twitter.png">
-                        <img src="assets/icons/colored/social/vk.png">
-                        <img src="assets/icons/colored/social/youtube.png">
+                        <a href="https://www.facebook.com/"><img src="assets/icons/colored/social/facebook.png"></a>
+                        <a href="https://twitter.com/Ilya_Solov23"><img src="assets/icons/colored/social/twitter.png"></a>
+                        <a href="https://vk.com/m1estere"><img src="assets/icons/colored/social/vk.png"></a>
+                        <a href="https://www.youtube.com/channel/UCi3J1FxEFC-6fIig5IvjbSg"><img src="assets/icons/colored/social/youtube.png"></a>
                     </div>
                 </div>
 

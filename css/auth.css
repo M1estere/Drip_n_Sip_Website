@@ -90,7 +90,9 @@ body::-webkit-scrollbar {
 }
 
 .left-full-region .top-block img {
-    max-width: 60px;
+    max-width: 120px;
+    background-color: #CA9960;
+    border-radius: 25px;
 }
 
 .left-full-region .middle-block {
