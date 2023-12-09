@@ -12,6 +12,10 @@ body {
     position: relative;
 }
 
+p {
+    color: #03262A;
+}
+
 body::-webkit-scrollbar {
     display: none;
 }
@@ -31,7 +35,7 @@ body::-webkit-scrollbar {
     align-items: center;
     min-height: 100px;
     min-width: 100%;
-    color: black;
+    color: #03262A;
     font-size: 29px;
     letter-spacing: 1.5px;
 }
@@ -49,7 +53,7 @@ body::-webkit-scrollbar {
 .nav-bar-full .nav-menu div a {
     float: left;
     display: block;
-    color: black;
+    color: #03262A;
     text-align: start;
     text-decoration: none;
     height: 100%;

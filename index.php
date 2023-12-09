@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Coffee Shop Home Page</title>
+    <title>Drip & Sip - Home</title>
 
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -18,7 +19,7 @@
     <?php include('server/check_for_cart.php');?>
     <?php include('templates/header.php');?>
 
-    <header class="photos-carousel-wrapper">
+    <section class="photos-carousel-wrapper">
         <section aria-label="Shop Photos">
             <div class="image-carousel" data-carousel>
                 <button class="carousel-button prev" data-carousel-button hidden>&#8656</button>
@@ -49,10 +50,10 @@
                 </ul>
             </div>
         </section>
-    </header>
+    </section>
 
-    <header class="notes-wrapper">
-        <div class="notes-region">
+    <section class="notes-wrapper">
+        <div class="notes-region container">
             <div class="note-block">
                 <div class="image">
                     <img src="assets/icons/simple/plane_brown.png">
@@ -108,11 +109,12 @@
                     </div>
                 </div>
             </div>
-    </header>
+        </div>
+    </section>
 
-    <header class="top-categories-wrapper">
-        <div class="top-categories-region">
-            <p align="center">Top Categories</p>
+    <section class="top-categories-wrapper">
+        <div class="top-categories-region container">
+            <p style="color: #03262A;" align="center">Top Categories</p>
 
             <div class="cat-buttons-region">
                 <a href="products_display.php?category=mocha">
@@ -140,11 +142,11 @@
                 </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <header class="top-prod-wrapper">
-        <div class="top-prod-region">
-            <p align="center">Top Products</p>
+    <section class="top-prod-wrapper">
+        <div class="top-prod-region container">
+            <p style="color: #03262A;" align="center">Top Products</p>
 
             <div class="prod-buttons-region">
                 <div id="featured-button" class="prod-button" onclick="openFeatured()">
@@ -276,9 +278,9 @@
                 ?>
             </div>
         </div>
-    </header>
+    </section>
 
-    <header class="picture-gallery-wrapper">
+    <section class="picture-gallery-wrapper">
         <div class="image-grid">
             <img src="assets/gallery/2.webp" alt="Gallery 2">
             <img class="image-grid-col-2 image-grid-row-2" src="assets/gallery/1.jpg" alt="Gallery 1">
@@ -286,11 +288,11 @@
             <img src="assets/gallery/4.jpg" alt="Gallery 4">
             <img src="assets/gallery/5.jpg" alt="Gallery 5">
         </div>
-    </header>
+    </section>
 
-    <header class="blogs-wrapper">
-        <div class="blogs-region">
-            <p align="center">Latest Blogs</p>
+    <section class="blogs-wrapper">
+        <div class="blogs-region container">
+            <p id="title" align="center">Latest Blogs</p>
 
             <div class="blogs-section">
                 <?php
@@ -307,7 +309,7 @@
                             <div class='blog'>
                                 <img src=$picture_path>
                                 <div class='info'>
-                                    <p>$title</p>
+                                    <p id='reg'>$title</p>
                                     <span class='colored'>$blog_date</span><br>
                                     <span class='reg'>$text</span>
                                 </div>
@@ -317,7 +319,7 @@
                 ?>
             </div>
         </div>
-    </header>
+    </section>
 
     <?php include('templates/footer.php'); ?>
 </body>

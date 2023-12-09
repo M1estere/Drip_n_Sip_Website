@@ -1,27 +1,19 @@
 .notes-wrapper {
     margin: 0;
-    padding-left: 200px;
-    padding-right: 200px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .top-categories-wrapper {
     margin: 0;
-    padding-left: 200px;
-    padding-right: 200px;
 }
 
 .top-prod-wrapper {
     margin: 0;
-    padding-left: 200px;
-    padding-right: 200px;
 }
 
 .blogs-wrapper {
     margin: 0;
-    padding-left: 200px;
-    padding-right: 200px;
 }
 
 .image-carousel {
@@ -34,7 +26,7 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: 400ms opacity ease-in-out;
+    transition: 600ms opacity ease-in-out;
     transition-delay: 100ms;
 }
 
@@ -59,7 +51,6 @@
 
 .notes-region {
     min-height: 100px;
-    min-width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 15px;
@@ -73,8 +64,7 @@
     border-radius: 13px;
     min-height: 95px;
     max-height: 95px;
-    min-width: 350px;
-    max-width: 345.5px;
+    width: 100%;
     align-items: center;
     background-color: white;
     transition: transform 0.3s ease-out;
@@ -107,32 +97,36 @@
 }
 
 .note-block .info .title {
-    letter-spacing: 2px;
-    font-size: 28px;
-    font-weight: bolder;
-    font-family: sans-serif;
+    letter-spacing: 2.5px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    text-transform: uppercase;
 }
 
 .note-block .info .desc {
     letter-spacing: 2px;
-    font-size: 23px;
-    font-family: sans-serif;
+    font-size: 21px;
+    font-weight: light;
+    font-family: 'HelveticaNeueCyr';
 }
 
 .top-categories-region {
-    min-width: 100%;
     min-height: 432px;
 }
 
 .top-categories-region p {
+    letter-spacing: 2px;
     font-size: 40px;
-    font-weight: bolder;
-    font-family: sans-serif;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    text-transform: uppercase;
 }
 
 .top-categories-region .cat-buttons-region {
     min-width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(476px, 1fr));
     align-items: center;
     justify-content: space-between;
     gap: 15px;
@@ -150,14 +144,12 @@
     user-select: none;
     text-align: center;
     font-size: 25px;
-    max-width: 476px;
-    min-width: 476px;
     min-height: 312px;
     max-height: 312px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
     text-transform: uppercase;
-    font-weight: bolder;
-    font-family: sans-serif;
     background-color: black;
     color: white;
     padding: 10px;
@@ -172,21 +164,23 @@
 
 .top-categories-region .cat-buttons-region .cat-button p {
     line-height: 0px;
-    font-weight: lighter;
-    font-family: sans-serif;
+    font-weight: 300;
+    font-family: 'HelveticaNeueCyr';
+    text-transform: uppercase;
     font-size: 15px;
     letter-spacing: 2px;
 }
 
 .top-prod-region {
-    min-width: 100%;
     min-height: 654px;
 }
 
 .top-prod-region p {
+    letter-spacing: 2px;
     font-size: 40px;
-    font-weight: bolder;
-    font-family: sans-serif;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    text-transform: uppercase;
 }
 
 .top-prod-region .prod-buttons-region {
@@ -203,9 +197,12 @@
     max-width: 135px;
     min-width: 135px;
     letter-spacing: 1px;
+    font-size: 15px;
     text-transform: uppercase;
-    font-weight: bolder;
-    font-family: sans-serif;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-family: 'HelveticaNeueCyr';
+    text-transform: uppercase;
     background-color: white;
     color: #646464;
     padding: 10px;
@@ -230,14 +227,12 @@
     margin-top: 35px;
     min-width: 100%;
     align-items: center;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(346px, 1fr));
     gap: 15px;
 }
 
 .top-prod-region .prod-region .prod-page {
-    min-width: 346px;
-    max-width: 346px;
     min-height: 476px;
     max-height: 476px;
     background-color: white;
@@ -301,18 +296,18 @@
 
 .top-prod-region .prod-region .prod-page .info .outer #price {
     text-align: end;
-    font-size: 20px;
-    letter-spacing: 1.5px;
-    font-weight: bolder;
-    font-family: sans-serif;
+    font-size: 17px;
+    letter-spacing: .5px;
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 900;
 }
 
 .top-prod-region .prod-region .prod-page .info .outer #calories {
     text-align: end;
     font-size: 20px;
-    letter-spacing: 1.5px;
-    font-weight: bolder;
-    font-family: sans-serif;
+    letter-spacing: .5px;
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 500;
     color: #646464;
 }
 
@@ -356,21 +351,32 @@
     margin-top: 30px;
 }
 
-.blogs-region p {
+.blogs-region #title {
     font-size: 40px;
-    font-weight: bolder;
-    font-family: sans-serif;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    text-transform: uppercase;
+}
+
+.blogs-region #reg {
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    text-transform: uppercase;
+    line-height: 0px;
 }
 
 .blogs-region .blogs-section {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(476px, 1fr));
+    margin: 0 auto;
+    align-items: center;
     gap: 46px;
 }
 
 .blogs-region .blogs-section .blog {
-    min-width: 476px;
-    max-width: 476px;
     min-height: 478px;
     max-height: 478px;
     transition: .5s;
@@ -382,8 +388,7 @@
 }
 
 .blogs-region .blogs-section .blog img {
-    max-width: 476px;
-    min-width: 476px;
+    width: 100%;
     max-height: 252px;
     min-height: 252px;
     filter: brightness(90%);
@@ -397,24 +402,29 @@
     transform: scale(1.01);
 }
 
-.blogs-region .blogs-section .blog p {
-    color: black;
-    font-size: 32px;
-    line-height: 0px;
-}
-
 .blogs-region .blogs-section .blog .colored {
     color: #CA9960;
-    font-weight: bolder;
-    font-family: sans-serif;
+    font-weight: 500;
+    font-family: 'HelveticaNeueCyr';
     font-size: 20px;
     letter-spacing: 1px;
 }
 
 .blogs-region .blogs-section .blog .reg {
     color: #646464;
-    font-weight: lighter;
-    font-family: sans-serif;
+    font-weight: 300;
+    font-family: 'HelveticaNeueCyr';
     font-size: 20px;
     letter-spacing: 1px;
+}
+
+@media screen and (max-width: 600px) {
+    .top-categories-region .cat-buttons-region .cat-button {
+        min-width: 100px;
+        max-width: 100px;
+    }
+    .top-categories-region .cat-buttons-region {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
 }

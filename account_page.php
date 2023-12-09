@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Account Page</title>
+    <title>Drip & Sip - Account</title>
 
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/account-page.css">
@@ -30,8 +31,8 @@
         }
     ?>
 
-    <header class="main-info-wrapper">
-        <div class="main-info">
+    <section class="main-info-wrapper">
+        <div class="main-info container">
             <div class="top-bar">
                 <div class="top-text">
                     <span>Account Information</span>
@@ -70,9 +71,9 @@
                         <div class="text-block">
                             <div class="left">
                                 <?php
-                                    echo "<span class='bold'>Username</span>";
-                                    echo "<span class='grey'>$username</span>";
-                                ?>
+                        echo "<span class='bold'>Username</span>";
+                        echo "<span class='grey'>$username</span>";
+                    ?>
                             </div>
 
                             <div class="right">
@@ -83,9 +84,9 @@
                         <div class="text-block">
                             <div class="left">
                                 <?php
-                                    echo "<span class='bold'>Name</span>";
-                                    echo "<span class='grey'>$name</span>";
-                                ?>
+                        echo "<span class='bold'>Name</span>";
+                        echo "<span class='grey'>$name</span>";
+                    ?>
                             </div>
 
                             <div class="right">
@@ -96,9 +97,9 @@
                         <div class="text-block">
                             <div class="left">
                                 <?php
-                                    echo "<span class='bold'>Email</span>";
-                                    echo "<span class='grey'>$email</span>";
-                                ?>
+                        echo "<span class='bold'>Email</span>";
+                        echo "<span class='grey'>$email</span>";
+                    ?>
                             </div>
 
                             <div class="right">
@@ -169,31 +170,31 @@
 
                     <div class="blocks-info-hist">
                         <?php
-                            include 'server/orders.php';
+                include 'server/orders.php';
 
-                            $orders_array = get_orders($_SESSION['id']);
+                $orders_array = get_orders($_SESSION['id']);
 
-                            foreach ($orders_array as $name => $info_array) {
-                                $price = '$'.$info_array['price'].' | '.$info_array['amount'].'pcs';
-                                echo "
-                                    <div class='text-block'>
-                                        <div class='left'>
-                                            <span class='bold'>$name</span>
-                                            <span class='grey'>$price</span>
-                                        </div>
+                foreach ($orders_array as $name => $info_array) {
+                    $price = '$'.$info_array['price'].' | '.$info_array['amount'].'pcs';
+                    echo "
+                        <div class='text-block'>
+                            <div class='left'>
+                                <span class='bold'>$name</span>
+                                <span class='grey'>$price</span>
+                            </div>
 
-                                        <div class='right'>
-                                            <div class='circle'></div>
-                                        </div>
-                                    </div>
-                                ";
-                            }
-                        ?>
+                            <div class='right'>
+                                <div class='circle'></div>
+                            </div>
+                        </div>
+                    ";
+                }
+            ?>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <?php include('templates/footer.php'); ?>
 </body>

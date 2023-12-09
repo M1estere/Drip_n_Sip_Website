@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel</title>
+    <title>Drip & Sip - Remove Product</title>
 
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/remove-product.css">

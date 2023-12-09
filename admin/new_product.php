@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel</title>
+    <title>Drip & Sip - Add Product</title>
 
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/new-product.css">

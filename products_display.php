@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Products Page</title>
+    <title>Drip & Sip - Products</title>
 
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/products-page.css">
@@ -17,8 +18,8 @@
     <?php include('server/check_for_cart.php');?>
     <?php include('templates/header.php'); ?>
 
-    <header class="main-info-wrapper">
-        <div class="main-info-region">
+    <section class="main-info-wrapper">
+        <div class="main-info-region container">
             <div class="top-text">
                 <span>Your coffee, sir</span>
             </div>
@@ -65,7 +66,7 @@
                 ?>
             </div>
         </div>
-    </header>
+    </section>
 
     <?php include('templates/footer.php'); ?>
 </body>

@@ -1,8 +1,8 @@
-<?php
-    session_start();
-?>
-    <header class="top-black-wrapper">
-        <div class="top-black-bar">
+<?php session_start(); ?>
+
+<header class="outer">
+    <div class="top-black-wrapper">
+        <div class="top-black-bar container">
             <div>
                 Welcome to our shop!
             </div>
@@ -11,10 +11,10 @@
                 Language EN-US
             </div>
         </div>
-    </header>
+    </div>
 
-    <header class="top-white-wrapper">
-        <div class="top-white-bar">
+    <div class="top-white-wrapper">
+        <div class="top-white-bar container">
             <div class="customer-support-region">
                 <div class="support-image">
                     <img src="assets/icons/simple/service_black.png">
@@ -26,7 +26,7 @@
 
             <div class="logo-region">
                 <div class="logo-block">
-                    <img src="assets/logo.png">
+                    <a href="index.php"><img src="assets/logo.png"></a>
                 </div>
             </div>
 
@@ -50,17 +50,17 @@
                         if (isset($_SESSION['cart_size'])) {
                             $amount = $_SESSION['cart_size'];
                         }
-
+    
                         echo "Shopping Cart ($amount items)";
                     ?>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
-    <header class="nav-bar-wrapper">
-        <div class="nav-bar-full">
+    <div class="nav-bar-wrapper">
+        <div class="nav-bar-full container">
             <div class="nav-menu">
                 <div><a href="index.php">home</a></div>
                 <div><a href="products_display.php?category=mocha">iced mocha</a></div>
@@ -80,4 +80,5 @@
                 </form>
             </div>
         </div>
-    </header>
+    </div>
+</header>

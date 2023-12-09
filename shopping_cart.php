@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Shopping Cart</title>
+    <title>Drip & Sip - Shopping Cart</title>
 
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/shopping-cart.css">

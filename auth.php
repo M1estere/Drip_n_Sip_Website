@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Authorize Page</title>
+    <title>Drip & Sip - Authorization</title>
 
     <link rel="stylesheet" href="css/auth.css">
 
@@ -84,7 +84,7 @@
                                 $email = trim($data['email']);
                                 $password = trim($data['password']);
 
-                                $request = "SELECT * FROM clients WHERE username = '{$username}' or name = '{$email}'";
+                                $request = "SELECT * FROM clients WHERE username = '{$username}' or email = '{$email}'";
                                 $query = mysqli_query($server_connection, $request);
 
                                 $user = mysqli_fetch_array($query);
