@@ -152,6 +152,7 @@ body::-webkit-scrollbar {
 }
 
 .top-white-bar .account-shopping-cart-region .shopping-cart .cart-text {
+    user-select: none;
     color: #CA9960;
     font-weight: bold;
     font-family: 'Helvetica Neue';
