@@ -42,17 +42,16 @@
                         <a href="shopping_cart.php">
                             <img src="assets/icons/simple/shop_black.png">
                         </a>
-                    </div>
-
-                    <div class="shopping-text">
-                        <?php
-                        $amount = 0;
-                        if (isset($_SESSION['cart_size'])) {
-                            $amount = $_SESSION['cart_size'];
-                        }
-    
-                        echo "Shopping Cart ($amount items)";
-                    ?>
+                        <div class="cart-text">
+                            <?php
+                                $amount = 0;
+                                if (isset($_SESSION['cart_size'])) {
+                                    $amount = $_SESSION['cart_size'];
+                                }
+            
+                                echo "<span>$amount</span>";
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,8 +74,8 @@
                     <input hidden type="text" placeholder="Search..." name="search" value="true">
 
                     <button type="submit">
-                    <img src="assets/icons/simple/search_black.png" class="search-button">
-                </button>
+                        <img src="assets/icons/simple/search_black.png" class="search-button">
+                    </button>
                 </form>
             </div>
         </div>
