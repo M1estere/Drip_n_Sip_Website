@@ -106,7 +106,7 @@
     white-space: nowrap;
     font-size: 18px;
     font-weight: bold;
-    font-family: 'HelveticaNeueCYR';
+    font-family: 'Helvetica Neue';
 }
 
 .cart-table .product-section .info-texts .regular {
@@ -215,8 +215,8 @@
 
 .total-info-block .sum-info-block .title {
     font-size: 36px;
-    font-family: sans-serif;
-    font-weight: bolder;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
     letter-spacing: 2px;
 }
 
@@ -237,6 +237,9 @@
 .total-info-block .sum-info-block .info-block .titles {
     display: flex;
     flex-direction: column;
+    font-weight: 500;
+    font-family: 'HelveticaNeueCyr';
+    letter-spacing: 1.5px;
     gap: 15px;
     text-align: start;
 }
@@ -244,13 +247,18 @@
 .total-info-block .sum-info-block .info-block .prices-info {
     display: flex;
     flex-direction: column;
+    font-weight: 500;
+    font-family: 'HelveticaNeueCyr';
+    letter-spacing: 1.5px;
     gap: 15px;
     text-align: end;
 }
 
 .discount-form input[type=text] {
     font-size: 24px;
-    font-weight: lighter;
+    font-weight: 300;
+    font-family: 'HelveticaNeueCyr';
+    letter-spacing: 1.5px;
     color: white;
     background-color: #D9D9D9;
     border-radius: 5px;
