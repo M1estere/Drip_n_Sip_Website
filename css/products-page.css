@@ -21,7 +21,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 45px;
+    gap: 25px;
 }
 
 .main-info-region .products-display .prod-page {
