@@ -5,7 +5,6 @@
 .main-info {
     margin-top: 70px;
     min-height: 620px;
-    max-height: 820px;
 }
 
 .main-info .top-bar {
@@ -57,7 +56,6 @@
     display: flex;
     justify-content: space-between;
     min-height: 640px;
-    max-height: 640px;
     min-width: 100%;
     max-width: 100%;
 }
@@ -66,7 +64,6 @@
     min-width: 510px;
     max-width: 510px;
     min-height: 100%;
-    max-height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -166,7 +163,6 @@
     gap: 15px;
     grid-template-columns: 405px 405px;
     min-height: 445px;
-    max-height: 445px;
     min-width: 100%;
     max-width: 100%;
 }
@@ -176,7 +172,6 @@
     gap: 15px;
     grid-template-columns: 750px;
     min-height: 445px;
-    max-height: 445px;
     min-width: 100%;
     max-width: 100%;
 }
@@ -203,7 +198,6 @@
     flex-direction: column;
     justify-content: space-between;
     min-width: 260px;
-    max-width: 260px;
     min-height: 75px;
     max-height: 75px;
     user-select: none;

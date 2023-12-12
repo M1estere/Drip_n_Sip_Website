@@ -64,7 +64,18 @@
 
                         <div class="form-block">
                             <p>Product Category</p>
-                            <input type="text" required minlength="3" name="category" placeholder="Product category...">
+                            <!-- <input type="text" required minlength="3" name="category" placeholder="Product category..."> -->
+                            <?php
+                                include 'categories.php';
+                                
+                                echo "<select name='category' required>";
+
+                                $categories = get_categories();
+                                foreach ($categories as $category) {
+                                    echo "<option value='$category'>$category</option>";
+                                }
+                                echo "</select>";
+                            ?>
                         </div>
 
                         <div class="form-block">
@@ -79,7 +90,7 @@
 
                         <div class="form-block">
                             <p>Product Picture</p>
-                            <input type="text" required minlength="4" name="picture" placeholder="Product picture..." value="coffee-default.png">
+                            <input type="text" required minlength="4" name="picture" placeholder="coffee-default.png" value="coffee-default.png">
                         </div>
                     </div>
 

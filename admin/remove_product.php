@@ -55,6 +55,7 @@
                 ?>
                 <table class="products-table" width="500px" height="500px">
                     <tr>
+                        <td></td>
                         <td><b>Name</b></td>
                         <td><b>Category</b></td>
                         <td><b>Price</b></td>
@@ -75,13 +76,15 @@
                                 $price = $product['price'];
                                 $calories = $product['calories'];
                                 $picture = $product['picture'];
-                                
+                                $picture_path = '../assets/coffee-products/'.$picture;
+
                                 $lower_name = strtolower($name);
                                 $lower_name = str_replace(' ', '_', $lower_name);
 
                                 echo "<tr>";
 
                                 echo "
+                                    <td><img src='$picture_path' width='50px' height='auto'></td>
                                     <td>$name</td>
                                     <td>$category</td>
                                     <td>$price</td>

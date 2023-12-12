@@ -34,8 +34,8 @@
     ?>
     <?php include('templates/header.php')?>
 
-    <header class="main-info-wrapper">
-        <div class="main-info">
+    <section class="main-info-wrapper">
+        <div class="main-info container">
             <div class="top-text">
                 <span>Your Cart</span>
             </div>
@@ -160,6 +160,8 @@
                                         echo "<span>$amount</span>";
                                         echo "<span>$$whole_order_sum</span>";
                                         echo "<span>$$delivery_cost</span>";
+
+                                        $_SESSION['delivery_cost'] = $delivery_cost;
                                     ?>
                                 </div>
                             </div>
@@ -170,12 +172,20 @@
                     </div>
 
                     <div class="checkout-button-region">
-                        <button class="checkout-button">checkout</button>
+                        <?php
+                            if (isset($_SESSION['cart_size']) && $_SESSION['cart_size'] > 0) {
+                                echo "
+                                    <form action='order_confirmation.php' method='GET'>
+                                        <button class='checkout-button'>checkout</button>
+                                    </form>
+                                ";
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <?php include('templates/footer.php')?>
 </body>

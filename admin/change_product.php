@@ -50,6 +50,8 @@
                     ?>
 
                     <?php
+                        include 'categories.php';
+
                         $id = 0;
 
                         $name = $_GET['name'];
@@ -80,12 +82,26 @@
                                     <p>Product Name</p>
                                     <input type='text' name='name' placeholder='New product name...' value='$name' required>
                                 </div>
+                        ";
 
-                                <div class='form-block'>
-                                    <p>Product Category</p>
-                                    <input type='text' name='category' value='$category' placeholder='New product category...' required>
-                                </div>
+                        echo "
+                            <div class='form-block'>
+                                <p>Product Price</p>
+                        ";
 
+                        echo "<select name='category' value='$category' required>";
+                        $categories = get_categories();
+                        foreach ($categories as $cat) {
+                            if ($category == $cat)
+                                echo "<option selected value='$cat'>$cat</option>";
+                            else
+                                echo "<option value='$cat'>$cat</option>";
+                        }
+                        echo "</select>";
+                        echo "</div>";
+
+                                
+                        echo "
                                 <div class='form-block'>
                                     <p>Product Price</p>
                                     <input type='number' name='price' value='$price' placeholder='New product price...' required>

@@ -56,12 +56,14 @@ input[type=number] {
 }
 
 input[type=text]:hover,
-input[type=number]:hover {
+input[type=number]:hover,
+select:hover {
     transform: translateX(7px);
 }
 
 input[type=text]:focus,
-input[type=number]:focus {
+input[type=number]:focus,
+select:focus {
     outline: none;
 }
 
@@ -83,4 +85,19 @@ input[type=submit] {
 input[type=submit]:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+select {
+    font-size: 23px;
+    font-weight: lighter;
+    letter-spacing: 1.5px;
+    padding: 6px;
+    height: 58px;
+    width: 425px;
+    border: none;
+    border-radius: 7px;
+    transition: .2s;
+    -webkit-box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
 }

@@ -17,18 +17,19 @@
             <div class="top-text">
                 <span>Clients' orders</span>
             </div>
-            <table class="orders-table" width="500" height="500">
+            <table class="orders-table" width="1300" height="500">
                 <tr>
                     <td><b>Client ID</b></td>
                     <td><b>Client Username</b></td>
                     <td><b>Order Cost</b></td>
                     <td><b>Order Size</b></td>
+                    <td><b>Creation Date</b></td>
                 </tr>
 
                 <?php
                     include '../server/db_connection.php';
 
-                    $request = "SELECT * FROM orders JOIN clients WHERE user_id = clients.id;";
+                    $request = "SELECT * FROM orders INNER JOIN clients ON orders.user_id = clients.id;";
 
                     $query = mysqli_query($server_connection, $request);
                     if ($query) {
@@ -37,6 +38,7 @@
                             $username = $order['username'];
                             $cost = $order['price'];
                             $size = $order['amount'];
+                            $date = $order['creation_date'];
 
                             echo "<tr>";
 
@@ -45,6 +47,7 @@
                                 <td>$username</td>
                                 <td>$cost</td>
                                 <td>$size</td>
+                                <td>$date</td>
                             ";
 
                             echo "</tr>";

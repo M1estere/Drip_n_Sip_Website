@@ -16,6 +16,7 @@
                 
                 $result_array[$order_name]['amount'] = $order['amount'];
                 $result_array[$order_name]['price'] = $order['price'];
+                $result_array[$order_name]['creation_date'] = $order['creation_date'];
 
                 $counter += 1;
             }

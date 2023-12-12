@@ -1,0 +1,191 @@
+.main-info {
+    margin-top: 70px;
+    min-height: 620px;
+}
+
+.main-info .top-texts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-info .top-text {
+    font-size: 30px;
+    color: black;
+    font-family: 'Helvetica Neue';
+    font-weight: bold;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.top-block {
+    margin-top: 15px;
+    background-color: white;
+    min-height: 560px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 26px;
+}
+
+.top-block .left-side {
+    width: 45%;
+    padding: 25px;
+    padding-left: 75px;
+    border-radius: 26px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 75px;
+}
+
+.top-block .right-side {
+    width: 55%;
+    padding: 25px;
+    padding-right: 75px;
+    border-radius: 0px 26px 26px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-block .right-side .main {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.top-block .block .title,
+.right-side .title {
+    text-transform: uppercase;
+    color: black;
+    font-size: 24px;
+    font-family: 'Helvetica Neue';
+    font-weight: bold;
+}
+
+.top-block .block .add-info {
+    margin-top: 25px;
+}
+
+.top-block .block .add-info .main-info {
+    color: black;
+    font-size: 24px;
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 500;
+}
+
+.top-block .block .add-info .add {
+    color: #646464;
+    font-size: 22px;
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 500;
+}
+
+.cart-table {
+    margin-top: 15px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.cart-table tr {
+    border-bottom: 1px solid #646464;
+}
+
+.cart-table td {
+    font-size: 24px;
+    font-family: 'Helvetica Neue';
+    padding: 15px 100px 5px 0px;
+}
+
+.cart-table .last-col {
+    padding: 0px;
+}
+
+.cart-table .product-section {
+    display: flex;
+    min-width: 190px;
+    max-width: 190px;
+    min-height: 80px;
+    max-height: 80px;
+}
+
+.cart-table .product-section img {
+    min-width: 70px;
+    max-width: 70px;
+    min-height: 70px;
+    max-height: 70px;
+    border: none;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.cart-table .product-section .info-texts .title {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+}
+
+.cart-table .product-section .info-texts .regular {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    font-weight: 300;
+    font-family: 'HelveticaNeueCYR';
+}
+
+.cart-table .amount-changer .amount-text {
+    font-family: 'HelveticaNeueCyr';
+    text-align: center;
+    font-weight: 300;
+}
+
+.cart-table .total-info,
+.cart-table .price-info {
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 500;
+}
+
+.leave-button-region {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 87px;
+    max-height: 87px;
+}
+
+.leave-button-region .leave-button {
+    width: 820px;
+    min-height: 87px;
+    max-height: 87px;
+    background-color: #CA9960;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 36px;
+    font-family: 'Helvetica Neue';
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: .2s;
+}
+
+.leave-button-region .leave-button:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.del-cost-region {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.del-cost-region .del-cost {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'HelveticaNeueCyr';
+    color: black;
+}
