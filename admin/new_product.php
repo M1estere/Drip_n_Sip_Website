@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/new-product.css">
+
+    <script src="js/new_product.js" defer></script>
 </head>
 
 <body>
@@ -15,28 +17,46 @@
     <?php
         include '../server/db_connection.php';
 
+        $extensions = ['png', 'webp'];
         $info_message = '';
-        if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['price']) && isset($_POST['calories']) && isset($_POST['picture'])) {
+        if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['price']) && isset($_POST['calories'])) {
             $name = trim($_POST['name']);
             $category = trim($_POST['category']);
             $price = trim($_POST['price']);
             $calories = trim($_POST['calories']);
-            $picture = trim($_POST['picture']);
+
+            $picture = $_FILES['picture'];
+
+            $time = time();
+            $picture_name = $time.$picture['name'];
+            $temp_name = $picture['tmp_name'];
+
+            $low_cat = strtolower($category);
+            $picture_to_save = $low_cat.'/'.$picture_name;
+            $destination = '../assets/coffee-products/'.$picture_to_save;
+
+            $extension = explode('.', $picture_name);
+            $extension = end($extension);
 
             $request = "SELECT * FROM products WHERE name = '$name' AND type = '$category';";
 
             $query = mysqli_query($server_connection, $request);
             $product = mysqli_fetch_array($query);
             if ($product) {
-                $info_message = 'Product '.$name.' of '.$category.' already exists';
+                $info_message = $info_message.' '.'Product '.$name.' of '.$category.' already exists';
             } else {
-                $request = "INSERT INTO products (name, type, price, calories, picture) VALUES ('$name', '$category', '$price', '$calories', '$picture');";
+                $request = "INSERT INTO products (name, type, price, calories, picture) VALUES ('$name', '$category', '$price', '$calories', '$picture_to_save');";
 
                 $query = mysqli_query($server_connection, $request);
                 if ($query) {
-                    $info_message = 'Successfully added '.$name;
+                    if (in_array($extension, $extensions)) {
+                        move_uploaded_file($temp_name, $destination);
+                        $info_message = 'Image uploaded successfully!';
+                    }
+
+                    $info_message = $info_message.' '.'Successfully added '.$name;
                 } else {
-                    $info_message = 'Something went wrong';
+                    $info_message = $info_message.' '.'Something went wrong';
                 }
             }
         }
@@ -49,7 +69,7 @@
             </div>
 
             <div class="new-product-form">
-                <form method="POST" action="new_product.php" class="form">
+                <form method="POST" action="new_product.php" class="form" enctype="multipart/form-data">
                     <?php
                         echo "
                             <p class='info-message'>$info_message</p>
@@ -64,7 +84,6 @@
 
                         <div class="form-block">
                             <p>Product Category</p>
-                            <!-- <input type="text" required minlength="3" name="category" placeholder="Product category..."> -->
                             <?php
                                 include 'categories.php';
                                 
@@ -90,10 +109,13 @@
 
                         <div class="form-block">
                             <p>Product Picture</p>
-                            <input type="text" required minlength="4" name="picture" placeholder="coffee-default.png" value="coffee-default.png">
+                            <div class="picture-container">
+                                <input type="file" id="selectedFile" name="picture" accept="image/png" style="display: none;" onchange="recheckFile()" required/>
+                                <input type="button" value="Browse Image..." onclick="chooseFile();"/>
+                                <img id="image">
+                            </div>
                         </div>
                     </div>
-
                     <input type="submit" value="Add Product">
                 </form>
             </div>

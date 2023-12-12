@@ -26,7 +26,7 @@
                         <td><b>Category</b></td>
                         <td><b>Price</b></td>
                         <td><b>Calories</b></td>
-                        <td><b>Picture</b></td>
+                        <td><b>Picture Path</b></td>
                     </tr>
                     <?php
                         include '../server/db_connection.php';

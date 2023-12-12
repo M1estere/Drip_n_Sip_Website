@@ -57,13 +57,19 @@ input[type=number] {
 
 input[type=text]:hover,
 input[type=number]:hover,
-select:hover {
+select:hover,
+input[type=button]:hover {
     transform: translateX(7px);
+}
+
+input[type=button]:hover {
+    cursor: pointer;
 }
 
 input[type=text]:focus,
 input[type=number]:focus,
-select:focus {
+select:focus,
+input[type=button]:focus {
     outline: none;
 }
 
@@ -85,6 +91,37 @@ input[type=submit] {
 input[type=submit]:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+input[type=button] {
+    font-size: 23px;
+    font-weight: lighter;
+    letter-spacing: 1.5px;
+    padding: 6px;
+    height: 58px;
+    width: 425px;
+    border: none;
+    border-radius: 7px;
+    transition: .2s;
+    -webkit-box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+}
+
+.picture-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px
+}
+
+.picture-container img {
+    width: 70px;
+    height: auto;
+    transition: .2s;
+}
+
+.picture-container img:hover {
+    transform: scale(1.2);
 }
 
 select {

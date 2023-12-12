@@ -60,7 +60,6 @@
                         <td><b>Category</b></td>
                         <td><b>Price</b></td>
                         <td><b>Calories</b></td>
-                        <td><b>Picture</b></td>
                         <td><b>Delete</b></td>
                     </tr>
                     <?php
@@ -89,7 +88,6 @@
                                     <td>$category</td>
                                     <td>$price</td>
                                     <td>$calories</td>
-                                    <td>$picture</td>
                                     <td class='last-col'>
                                         <a href='?name=$lower_name&category=$category'>
                                             <div class='delete-button'>
