@@ -47,6 +47,7 @@
         </div>
     </div>
     <hr noshade>
+    
     <div class="bottom-footer-part">
         <div class="footer-bottom container">
             <div>

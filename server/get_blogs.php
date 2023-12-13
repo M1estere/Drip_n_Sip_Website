@@ -1,4 +1,6 @@
 <?php
+    // get array of all blogs
+
     include 'db_connection.php';
 
     function blogs() {

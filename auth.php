@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header class="main-region">
+    <section class="main-region">
         <div class="left-wrapper">
             <div id="head" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/carousel/shop-1.jpg'); background-repeat: no-repeat; background-size: cover;">
             </div>
@@ -24,7 +24,7 @@
 
                 <div class="middle-block"><br>
                     <p>Welcome to Drip & Sip</p>
-                    <span>Lorem ipsum inspiring people</span>
+                    <span>Inspiring people on great things</span>
                 </div>
 
                 <div class="bottom-block">
@@ -128,7 +128,7 @@
                             
                             if ($username == 'admin' && $password == 'admin') {
                                 $_POST = array();
-                                header('Location: admin/admin_panel.php');
+                                header('Location: admin/products.php');
                                 die;
                             }
 
@@ -191,7 +191,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 </body>
 
 </html>

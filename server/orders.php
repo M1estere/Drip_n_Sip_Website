@@ -1,4 +1,6 @@
 <?php
+    // get all orders for specified id
+
     include 'db_connection.php';
 
     function get_orders($user_index) {

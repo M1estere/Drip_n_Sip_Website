@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/account-page.css">
+
     <script src="js/account_page.js" defer></script>
 </head>
 
@@ -16,6 +17,7 @@
     <?php include('templates/header.php'); ?>
 
     <?php
+        // check if no session -> go to auth page
         if (session_status() != PHP_SESSION_ACTIVE) {
             header("Location: /auth.php");
             die;
@@ -170,6 +172,7 @@
 
                     <div class="blocks-info-hist">
                         <?php
+                            // display orders
                             include 'server/orders.php';
 
                             $orders_array = get_orders($_SESSION['id']);

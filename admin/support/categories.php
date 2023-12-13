@@ -1,5 +1,5 @@
 <?php
-    include '../server/db_connection.php';
+    include '../../server/db_connection.php';
 
     function get_categories() {
         global $server_connection;

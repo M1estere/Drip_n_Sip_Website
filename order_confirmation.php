@@ -13,6 +13,15 @@
 
 <body>
     <?php session_start(); ?>
+    <?php
+        if (isset($_SESSION['cart_size'])) {
+            $cart_size_saved = $_SESSION['cart_size'];
+            $_SESSION['cart_size'] = 0; 
+        } else {
+            header("Location: /index.php");
+            die;
+        }
+    ?>
     <?php include('templates/header.php'); ?>
 
     <section class="main-info-wrapper">
@@ -24,9 +33,10 @@
 
                 <div class="top-text">
                     <?php
+                        // count cart and leave if is empty
                         include 'server/db_connection.php';
 
-                        if (isset($_SESSION['cart_size']) && $_SESSION['cart_size'] >= 1) {
+                        if ($cart_size_saved >= 1) {
                             $total_price = 0;
 
                             $cart = $_SESSION['cart'];
@@ -60,8 +70,14 @@
                     <div class="block">
                         <span class="title">Your Information</span>
                         <div class="add-info">
-                            <span class="main-info">Ilya, m1estere</span><br>
-                            <span class="add">7156643@gmail.com</span>
+                            <?php
+                                $name = $_SESSION['name'];
+                                $username = $_SESSION['username'];
+                                $email = $_SESSION['email'];
+
+                                echo "<span class='main-info'>$username, $name</span><br>";
+                                echo "<span class='add'>$email</span>";
+                            ?>
                         </div>
                     </div>
 
@@ -79,6 +95,19 @@
                             <span class="main-info">Russia, Moscow</span><br>
                             <span class="add">pr. Vernadskogo, 78/2,</span><br>
                             <span class="add">115547</span>
+                        </div>
+                    </div>
+
+                    <div class="block">
+                        <span class="title">Delivery Date</span>
+                        <div class="add-info">
+                            <?php
+                                $date = date('d F Y');
+                                $est_date = date('d F Y', strtotime($date.' + 2 days'));
+                                
+                                echo "<span class='main-info'>Today: $date</span><br>";
+                                echo "<span class='add'>Estimated: $est_date</span><br>";
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -150,7 +179,7 @@
                                 }
 
                                 $user_id = $_SESSION['id'];
-                                $amount = $_SESSION['cart_size'];
+                                $amount = $cart_size_saved;
                                 $current_date = date('Y-m-d');
 
                                 $request = "INSERT INTO orders (user_id, amount, price, creation_date) VALUES ('$user_id', '$amount', '$total_price', '$current_date');";
@@ -159,6 +188,8 @@
                                 if (!$query) {
                                     echo "Some error occured";
                                 }
+
+                                $_SESSION['cart'] = array();
                             ?>
                         </table>
                         <?php

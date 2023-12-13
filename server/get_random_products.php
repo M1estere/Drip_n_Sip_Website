@@ -1,4 +1,6 @@
 <?php
+    // get random products of specified length
+
     include 'db_connection.php';
 
     function get_products($amount) {

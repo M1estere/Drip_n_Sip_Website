@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 75px;
+    gap: 55px;
 }
 
 .top-block .right-side {
@@ -56,6 +56,7 @@
 
 .top-block .block .title,
 .right-side .title {
+    line-height: 0px;
     text-transform: uppercase;
     color: black;
     font-size: 24px;

@@ -1,4 +1,6 @@
 <?php
+    // get all products for one category
+
     include 'db_connection.php';
 
     function search($category) {

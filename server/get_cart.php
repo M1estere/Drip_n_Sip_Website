@@ -1,6 +1,7 @@
 <?php
     include 'db_connection.php';
 
+    // get shopping cart (products)
     function get_cart() {
         global $server_connection;
 
@@ -36,12 +37,14 @@
         return $res_cart;
     }
     
+    // get amount of specified product (support func)
     function get_amount($name) {
         $index = find_element_by_id($_SESSION['cart'], $name);
 
         return $_SESSION['cart'][$index]['amount'];
     }
 
+    // process duplicates of every position in array (support func)
     function process_duplicates($array) {
         $res_array = array();
         $t = [
@@ -70,6 +73,7 @@
         return $res_array;
     }
 
+    // get element name in array by some name (support func)
     function find_element($array, $element) {
         foreach ($array as $name => $product_info) {
             if (trim($product_info['name']) == trim($element)) {
@@ -79,6 +83,7 @@
         }
     }
 
+    // decrease amount of element by 1 from cart by name
     function remove_element($element_name) {
         if (isset($_SESSION['cart'])) {    
             $index = find_element_by_id($_SESSION['cart'], $element_name);
@@ -96,6 +101,7 @@
         }
     }
 
+    // delete element from cart by name
     function delete_element($element_name) {
         $index = find_element_by_id($_SESSION['cart'], $element_name);
     
@@ -107,7 +113,8 @@
         unset($_SESSION['cart'][$index]);
         $_SESSION['cart_size'] -= (int)$temp;
     }
-
+    
+    // increase amount of element in cart by 1
     function add_element($element_name) {
         if (isset($_SESSION['cart'])) {
             $index = find_element_by_id($_SESSION['cart'], $element_name);
@@ -120,6 +127,7 @@
         }
     }
 
+    // get element in array by id (support func)
     function find_element_by_id($array, $element_name) {
         $element_name = str_replace(' ', '_', $element_name);
         $element_name = strtolower($element_name);

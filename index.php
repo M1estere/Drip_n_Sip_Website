@@ -161,10 +161,14 @@
             </div>
             <div class="prod-region" id="featured">
                 <?php
+                    // display 4 random products for each section
                     include 'server/get_random_products.php';
 
-                    $products = get_products(4);
+                    $products = get_products(12);
+                    $counter = 0;
                     foreach ($products as $name => $product_info) {
+                        if ($counter >= 4) break;
+                        $counter += 1;
                         $link = 'index.php?product_id='.$product_info['id'];
 
                         $category = $product_info['category'];
@@ -197,13 +201,18 @@
                             </div>
                         ";
                     }
+
+                    $products = array_slice($products, 4);
                 ?>
             </div>
 
             <div class="prod-region" id="hottest">
                 <?php
-                    $products = get_products(4);
+                    // display 4 random products for each section
+                    $counter = 0;
                     foreach ($products as $name => $product_info) {
+                        if ($counter >= 4) break;
+                        $counter += 1;
                         $link = 'index.php?product_id='.$product_info['id'];
 
                         $category = $product_info['category'];
@@ -236,13 +245,18 @@
                             </div>
                         ";
                     }
+
+                    $products = array_slice($products, 4);
                 ?>
             </div>
 
             <div class="prod-region" id="bestseller">
                 <?php
-                    $products = get_products(4);
+                    // display 4 random products for each section
+                    $counter = 0;
                     foreach ($products as $name => $product_info) {
+                        if ($counter >= 4) break;
+                        $counter += 1;
                         $link = 'index.php?product_id='.$product_info['id'];
 
                         $category = $product_info['category'];

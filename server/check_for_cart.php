@@ -1,4 +1,5 @@
 <?php
+    // set cart
     if (isset($_GET['product_id']) && isset($_GET['name'])) {
         if (!isset($_SESSION['id'])) {
             header("Location: /auth.php");
@@ -33,6 +34,7 @@
         }
     }
 
+    // find element by name in array (support func)
     function find_element($array, $element) {
         foreach ($array as $name => $product_info) {
             if (trim($product_info['name']) == trim($element)) {
