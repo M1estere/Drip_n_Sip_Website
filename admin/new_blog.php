@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Drip & Sip - New Product</title>
+    <title>Drip & Sip - New Blog</title>
 
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/form.css">
@@ -19,11 +18,10 @@
 
         $extensions = ['png', 'webp'];
         $info_message = '';
-        if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['price']) && isset($_POST['calories'])) {
-            $name = trim($_POST['name']);
-            $category = trim($_POST['category']);
-            $price = trim($_POST['price']);
-            $calories = trim($_POST['calories']);
+        if (isset($_POST['date']) && isset($_POST['title']) && isset($_POST['text'])) {
+            $date = $_POST['date'];
+            $title = $_POST['title'];
+            $text = $_POST['text'];
 
             $picture = $_FILES['picture'];
 
@@ -33,7 +31,7 @@
 
             $low_cat = strtolower($category);
             $picture_to_save = $low_cat.'/'.$picture_name;
-            $destination = '../assets/coffee-products/'.$picture_to_save;
+            $destination = '../assets/blogs/'.$picture_to_save;
 
             $extension = explode('.', $picture_name);
             $extension = end($extension);
@@ -45,7 +43,8 @@
             if ($product) {
                 $info_message = $info_message.' '.'Product '.$name.' of '.$category.' already exists';
             } else {
-                $request = "INSERT INTO products (name, type, price, calories, picture) VALUES ('$name', '$category', '$price', '$calories', '$picture_to_save');";
+                $picture_to_save = 'blogs'.$picture_to_save;
+                $request = "INSERT INTO blogs (date, title, text, picture) VALUES ('$date', '$title', '$text', '$picture_to_save');";
 
                 $query = mysqli_query($server_connection, $request);
                 if ($query) {
@@ -55,7 +54,7 @@
                     }
 
                     $info_message = $info_message.' '.'Successfully added '.$name;
-                    header("Location: products.php?action=add");
+                    header("Location: blogs.php?action=add");
                     die;
                 } else {
                     $info_message = $info_message.' '.'Something went wrong';
@@ -67,11 +66,11 @@
     <section class="main-info-wrapper">
         <div class="main-info-region container">
             <div class="top-text">
-                <span>Add new product</span>
+                <span>Add New Blog</span>
             </div>
 
             <div class="display-region">
-                <form method="POST" action="new_product.php" class="form" enctype="multipart/form-data">
+                <form method="POST" action="new_blog.php" class="form" enctype="multipart/form-data">
                     <?php
                         echo "
                             <p class='info-message'>$info_message</p>
@@ -80,50 +79,34 @@
 
                     <div class="input-fields">
                         <div class="form-block">
-                            <p>Product Name</p>
-                            <input type="text" required minlength="4" name="name" placeholder="Product name...">
+                            <p>Blog Creation Date</p>
+                            <input type="date" required minlength="4" name="date">
                         </div>
 
                         <div class="form-block">
-                            <p>Product Category</p>
-                            <?php
-                                include 'support/categories.php';
-                                
-                                echo "<select name='category' required>";
-
-                                $categories = get_categories();
-                                foreach ($categories as $category) {
-                                    echo "<option value='$category'>$category</option>";
-                                }
-                                echo "</select>";
-                            ?>
+                            <p>Blog Title</p>
+                            <input type="text" required minlength="5" name="title" placeholder="Blog title...">
                         </div>
 
                         <div class="form-block">
-                            <p>Product Price</p>
-                            <input type="number" required minlength="1" name="price" placeholder="Product price...">
+                            <p>Blog Text</p>
+                            <textarea rows="8" name="text" placeholder="Blog text..." required minlength="5"></textarea>
                         </div>
 
                         <div class="form-block">
-                            <p>Product Calories</p>
-                            <input type="number" required minlength="2" name="calories" placeholder="Product calories...">
-                        </div>
-
-                        <div class="form-block">
-                            <p>Product Picture</p>
+                            <p>Blog Picture</p>
                             <div class="picture-container">
                                 <input type="file" id="selectedFile" name="picture" accept="image/png" style="display: none;" onchange="recheckFile()" required/>
                                 <input type="button" value="Browse Image..." onclick="chooseFile();"/>
-                                <img id="image" width='80px' height='auto'>
+                                <img id="image" width="250px" height="100px">
                             </div>
                         </div>
                     </div>
-                    <input type="submit" value="Add Product">
+                    <input type="submit" value="Add Blog">
                 </form>
             </div>
         </div>
     </section>
-
 </body>
 
 </html>

@@ -1,17 +1,13 @@
 .main-info-wrapper {
     margin: 0;
-    padding-left: 200px;
-    padding-right: 200px;
 }
 
 .main-info-region {
     margin-top: 70px;
     min-height: 800px;
-    min-width: 100%;
-    max-width: 100%;
 }
 
-.main-info-region .products-region .form .input-fields {
+.main-info-region .display-region .form .input-fields {
     display: grid;
     grid-template-columns: 450px 450px;
     gap: 25px;
@@ -24,15 +20,15 @@
     font-family: sans-serif;
 }
 
-.main-info-region .products-region .form .input-fields .form-block p {
+.main-info-region .display-region .form .input-fields .form-block p {
     font-size: 23px;
     font-weight: bolder;
     letter-spacing: 1.5px;
     font-family: sans-serif;
 }
 
-.main-info-region .products-region .form .info-message {
-    color: green;
+.main-info-region .display-region .form .info-message {
+    color: red;
     letter-spacing: 1.5px;
     font-size: 15px;
     font-weight: bolder;
@@ -40,7 +36,8 @@
 }
 
 input[type=text],
-input[type=number] {
+input[type=number],
+input[type=date] {
     font-size: 23px;
     font-weight: lighter;
     letter-spacing: 1.5px;
@@ -58,7 +55,9 @@ input[type=number] {
 input[type=text]:hover,
 input[type=number]:hover,
 select:hover,
-input[type=button]:hover {
+input[type=button]:hover,
+input[type=date]:hover,
+textarea:hover {
     transform: translateX(7px);
 }
 
@@ -69,7 +68,9 @@ input[type=button]:hover {
 input[type=text]:focus,
 input[type=number]:focus,
 select:focus,
-input[type=button]:focus {
+input[type=button]:focus,
+input[type=date]:focus,
+textarea:focus {
     outline: none;
 }
 
@@ -108,6 +109,21 @@ input[type=button] {
     box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
 }
 
+textarea {
+    resize: none;
+    font-size: 23px;
+    font-weight: lighter;
+    letter-spacing: 1.5px;
+    padding: 6px;
+    width: 425px;
+    border: none;
+    border-radius: 7px;
+    transition: .2s;
+    -webkit-box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 6px 11px 16px 0px rgba(34, 60, 80, 0.2);
+}
+
 .picture-container {
     display: flex;
     justify-content: space-between;
@@ -115,8 +131,7 @@ input[type=button] {
 }
 
 .picture-container img {
-    width: 70px;
-    height: auto;
+    object-fit: cover;
     transition: .2s;
 }
 

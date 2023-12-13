@@ -6,9 +6,9 @@
     <title>Drip & Sip - Update Product</title>
 
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/change-product.css">
+    <link rel="stylesheet" href="css/form.css">
 
-    <script src="js/new_product.js" defer></script>
+    <script src="js/browse_pic.js" defer></script>
 </head>
 
 <body>
@@ -26,34 +26,50 @@
             $price = $_POST['price'];
             $calories = $_POST['calories'];
             
-            $picture_name = $picture['name'];
+            $time = time();
+            $picture_name = $time.'_'.$_FILES['picture']['name'];
             
             $low_cat = strtolower($category);
             $picture_to_save = $low_cat.'/'.$picture_name;
 
             $ext = strtolower(pathinfo($picture_to_save, PATHINFO_EXTENSION));
-            if (in_array($ext, $extensions)) {
-                $request = "UPDATE products SET name = '$name', type = '$category', price = '$price', calories = '$calories', picture = '$picture_to_save' WHERE id = '$id';";
-            } else {
+            
+            $test_path = '../assets/coffee-products/'.$picture_to_save;
+            if (file_exists($test_path)) {
+                $info_message = $info_message.' '.'File '.$picture_to_save.' exists';
                 $request = "UPDATE products SET name = '$name', type = '$category', price = '$price', calories = '$calories' WHERE id = '$id';";
+            } else {
+                move_uploaded_file($_FILES['picture']['tmp_name'], $test_path);
+                if (in_array($ext, $extensions)) {
+                    $request = "UPDATE products SET name = '$name', type = '$category', price = '$price', calories = '$calories', picture = '$picture_to_save' WHERE id = '$id';";
+                } else {
+                    $request = "UPDATE products SET name = '$name', type = '$category', price = '$price', calories = '$calories' WHERE id = '$id';";
+                }
             }
 
             $query = mysqli_query($server_connection, $request);
             if ($query) {
                 $info_message = $info_message.' '.'Product '.$name.' successfully updated!';
+
+                $temp_name = $name;
+                $temp_name = str_replace(' ', '_', $temp_name);
+                $temp_name = strtolower($temp_name);
+                $get = 'action=change&change_name='.$temp_name;
+                header("Location: products.php?".$get);
+                die;
             } else {
                 $info_message = $info_message.' '.'Something went wrong...';
             }
         }
     ?>
 
-    <header class="main-info-wrapper">
-        <div class="main-info-region">
+    <section class="main-info-wrapper">
+        <div class="main-info-region container">
             <div class="top-text">
                 <span>Change Product</span>
             </div>
 
-            <div class="products-region">
+            <div class="display-region">
                 <form method="POST" action="change_product.php" class="form" enctype="multipart/form-data">
                     <?php
                         echo "
@@ -62,7 +78,7 @@
                     ?>
 
                     <?php
-                        include 'categories.php';
+                        include 'support/categories.php';
 
                         $name = $_GET['name'];
                         $name = str_replace('_', ' ', $name);
@@ -145,7 +161,7 @@
                                     <div class='picture-container'>
                                         <input type='file' id='selectedFile' name='picture' accept='image/png, image/webp' style='display: none;' onchange='recheckFile()' value='$path'/>
                                         <input type='button' value='Browse Image...' onclick='chooseFile();'/>
-                                        <img id='image' src='$path'>
+                                        <img id='image' width='80px' height='auto' src='$path'>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +172,7 @@
                 </form>
             </div>
         </div>
-    </header>
+    </section>
 
 </body>
 

@@ -3,18 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Drip & Sip - Remove Product</title>
+    <title>Drip & Sip - Products Control</title>
 
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/remove-product.css">
+    <link rel="stylesheet" href="css/display-table.css">
 </head>
 
 <body>
     <?php include('templates/header.php'); ?>
 
     <?php
+        // control display message when deleting/updating
         include '../server/db_connection.php';
 
+        $info_message = '';
+        if (isset($_GET['action'])) {
+            $action = $_GET['action'];
+            
+            if ($action == 'add') {
+                $info_message = 'Successfully added new product!';
+            } else if ($action == 'change') {
+                if (isset($_GET['change_name'])) {
+                    $name = $_GET['change_name'];
+                    $name = str_replace('_', ' ', $name);
+                    $name = ucwords($name);
+                    $info_message = 'Successfully changed '.$name;
+                }
+            }
+        }
+
+        // control deleting
         if (isset($_GET['name']) && isset($_GET['category'])) {
             $name = trim($_GET['name']);
             $category = trim($_GET['category']);
@@ -41,28 +59,30 @@
         }
     ?>
 
-    <header class="main-info-wrapper">
-        <div class="main-info-region">
+    <section class="main-info-wrapper">
+        <div class="main-info-region container">
             <div class="top-text">
-                <span>Remove product</span>
+                <span>Products</span>
             </div>
 
-            <div class="products-region">
+            <div class="display-region">
                 <?php
                     echo "
                         <p class='info-message'>$info_message</p>
                     ";
                 ?>
-                <table class="products-table" width="500px" height="500px">
+                <table class="display-table" width="100%" height="500px">
                     <tr>
                         <td></td>
                         <td><b>Name</b></td>
                         <td><b>Category</b></td>
                         <td><b>Price</b></td>
                         <td><b>Calories</b></td>
-                        <td><b>Delete</b></td>
+                        <td></td>
                     </tr>
+
                     <?php
+                        // fill contents
                         include '../server/db_connection.php';
 
                         $request = "SELECT * FROM products;";
@@ -109,8 +129,12 @@
                     ?>
                 </table>
             </div>
+
+            <form class="new-product-form" method="POST" action="new_product.php">
+                <input type="submit" value="Add New Product">
+            </form>
         </div>
-    </header>
+    </section>
 
 </body>
 
