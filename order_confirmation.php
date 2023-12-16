@@ -28,7 +28,7 @@
         <div class="main-info container">
             <div class="top-texts">
                 <div class="top-text">
-                    <span>Order Confirmation</span>
+                    <span data-i18="conf-order-conf-title">Order Confirmation</span>
                 </div>
 
                 <div class="top-text">
@@ -56,7 +56,7 @@
 
                             $delivery_cost = $_SESSION['delivery_cost'];
                             $total_price += $delivery_cost;
-                            echo "<span>Total: $$total_price</span>";
+                            echo "<span data-i18='conf-order-total-title'>Total: </span><span>$$total_price</span>";
                         } else {
                             header("Location: /index.php");
                             die;
@@ -68,7 +68,7 @@
             <div class="top-block">
                 <div class="left-side">
                     <div class="block">
-                        <span class="title">Your Information</span>
+                        <span class="title" data-i18="conf-your-info">Your Information</span>
                         <div class="add-info">
                             <?php
                                 $name = $_SESSION['name'];
@@ -82,45 +82,45 @@
                     </div>
 
                     <div class="block">
-                        <span class="title">Payment</span><br>
+                        <span class="title" data-i18="conf-payment-title">Payment</span><br>
                         <div class="add-info">
                             <span class="main-info">VISA</span><br>
-                            <span class="add">Visa card ending with 1234</span>
+                            <span class="add" data-i18="conf-card-info">Visa card ending with 1234</span>
                         </div>
                     </div>
 
                     <div class="block">
-                        <span class="title">Shipping Address</span>
+                        <span class="title" data-i18="conf-ship-address">Shipping Address</span>
                         <div class="add-info">
-                            <span class="main-info">Russia, Moscow</span><br>
-                            <span class="add">pr. Vernadskogo, 78/2,</span><br>
+                            <span class="main-info" data-i18="conf-ship-address-country">Russia, Moscow</span><br>
+                            <span class="add" data-i18="conf-ship-address-desc">pr. Vernadskogo, 78/2,</span><br>
                             <span class="add">115547</span>
                         </div>
                     </div>
 
                     <div class="block">
-                        <span class="title">Delivery Date</span>
+                        <span class="title" data-i18="conf-del-date">Delivery Date</span>
                         <div class="add-info">
                             <?php
                                 $date = date('d F Y');
                                 $est_date = date('d F Y', strtotime($date.' + 2 days'));
                                 
-                                echo "<span class='main-info'>Today: $date</span><br>";
-                                echo "<span class='add'>Estimated: $est_date</span><br>";
+                                echo "<span class='main-info' data-i18='conf-today'>Today: </span><span class='main-info'>$date</span><br>";
+                                echo "<span class='add' data-i18='conf-est'>Estimated:</span><span class='add'>$est_date</span><br>";
                             ?>
                         </div>
                     </div>
                 </div>
 
                 <div class="right-side">
-                    <span class="title">Order Information</span>
+                    <span class="title" data-i18='conf-order-info'>Order Information</span>
                     <div class="main">
                         <table class="cart-table">
                             <tr>
-                                <td>PRODUCT</td>
-                                <td>PRICE</td>
-                                <td>QUANTITY</td>
-                                <td>TOTAL</td>
+                                <td data-i18="cart-products-title">PRODUCT</td>
+                                <td data-i18="cart-price-title">PRICE</td>
+                                <td data-i18="cart-quantity-title">QUANTITY</td>
+                                <td data-i18="cart-total-title">TOTAL</td>
                             </tr>
                             <?php
                                 $cart = $_SESSION['cart'];
@@ -197,15 +197,15 @@
                             echo "
                                 <div class='del-cost-region'>
                                     <div class='del-cost'>
-                                        Subtotal: $$subtotal
+                                        <span data-i18='cart-subtotal'>Subtotal</span>: $$subtotal
                                     </div>
 
                                     <div class='del-cost'>
-                                        Delivery Cost: $$delivery_cost
+                                        <span data-i18='cart-del-cost'>Delivery Cost</span>: $$delivery_cost
                                     </div><br>
 
                                     <div class='del-cost'>
-                                        Total Cost: $$total_price
+                                        <span data-i18='conf-total-cost'>Total Cost</span>: $$total_price
                                     </div>
                                 </div>
                             ";
@@ -217,12 +217,14 @@
 
         <div class="leave-button-region">
             <form action="index.php" method="POST">
-                <button class="leave-button">RETURN TO HOME PAGE</button>
+                <button class="leave-button" data-i18="conf-return-btn">RETURN TO HOME PAGE</button>
             </form>
         </div>
     </section>
 
     <?php include('templates/footer.php'); ?>
+
+    <script type="module" src="js/translator.js"></script>
 </body>
 
 </html>

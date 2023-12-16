@@ -15,6 +15,7 @@
     <?php
         // control display message when deleting/updating
         include '../server/db_connection.php';
+        include 'support/translator.php';
 
         $info_message = '';
         if (isset($_GET['action'])) {
@@ -35,7 +36,13 @@
         // control deleting
         if (isset($_GET['name']) && isset($_GET['category'])) {
             $name = trim($_GET['name']);
+            $name = str_replace('_', ' ', $name);
+            $name = str_replace('-', ' ', $name);
+            $name = ucwords($name);
+
             $category = trim($_GET['category']);
+            $category = str_replace('_', ' ', $category);
+            $category = str_replace('-', ' ', $category);
 
             $request = "SELECT * FROM products WHERE name = '$name' AND type = '$category';";
 
@@ -49,7 +56,24 @@
 
                 $query = mysqli_query($server_connection, $request);
                 if ($query) {
-                    $info_message = 'Product '.$name.' of '.$category.' successfully deleted!';
+                    $picture = $product['picture'];
+                    unlink('../assets/coffee-products/'.$picture);
+
+                    $temp_name = $name;
+                    $temp_cat = $category;
+
+                    $temp_name = strtolower($temp_name);
+                    $temp_name = str_replace(' ', '-', $temp_name);
+                    $temp_name = str_replace('_', '-', $temp_name);
+                    
+                    $temp_cat = strtolower($temp_cat);
+                    $temp_cat = str_replace(' ', '-', $temp_cat);
+
+                    $translate_key = 'products-'.$temp_cat.'-'.$temp_name;
+                    if (delete_text_from_translations($translate_key))
+                        $info_message = 'Product '.$name.' of '.$category.' successfully deleted!';
+                    else 
+                        $info_message = 'Something went wrong!';
                 } else {
                     $info_message = 'Something went wrong!';
                 }

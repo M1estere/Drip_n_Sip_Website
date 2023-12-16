@@ -21,7 +21,7 @@
     <section class="main-info-wrapper">
         <div class="main-info-region container">
             <div class="top-text">
-                <span>Your coffee, sir</span>
+                <span data-i18="display-coffe-title">Your coffee, sir</span>
             </div>
 
             <div class="products-display">
@@ -33,6 +33,16 @@
                         $category = lcfirst($_GET['category']);
 
                         $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'].'&search='.$_GET['search'];
+
+                        $category = $product_info['category'];
+                        $category = strtolower($category);
+                        $category = str_replace(' ', '-', $category);
+
+                        $name = $product_info['name'];
+                        $name = strtolower($name);
+                        $name = str_replace(' ', '-', $name);
+
+                        $key_to_check = 'products-'.$category.'-'.$name;
 
                         $product_name = $product_info['name'];
                         $price = '$'.$product_info['price'];
@@ -49,14 +59,17 @@
                                     <img src='$picture_path'>
                                 </div>
                                 <div class='info'>
-                                    <p align='center'>$product_name</p>
+                                    <p align='center' data-i18='$key_to_check'>$product_name</p>
                                     <div class='outer'>
                                         <a href='$link'>
                                             <img src='assets/icons/simple/shop_brown.png'>
                                         </a>
                                         <div class='right'>
                                             <span id='price'>$price</span>
-                                            <span id='calories'>{$calories}cal</span>
+                                            <div>
+                                                <span id='calories'>{$calories}</span>
+                                                <span id='calories' data-i18='cal-title'>cal</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -69,6 +82,8 @@
     </section>
 
     <?php include('templates/footer.php'); ?>
+
+    <script type="module" src="js/translator.js"></script>
 </body>
 
 </html>

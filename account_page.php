@@ -37,11 +37,11 @@
         <div class="main-info container">
             <div class="top-bar">
                 <div class="top-text">
-                    <span>Account Information</span>
+                    <span data-i18="acc-page-acc-info">Account Information</span>
                 </div>
 
                 <div class="sign-out-button">
-                    <button onclick="signOut()" class="sign-out">sign out</button>
+                    <button onclick="signOut()" class="sign-out" data-i18="acc-page-sign-out">sign out</button>
                 </div>
             </div>
             <div class="info-block">
@@ -57,23 +57,23 @@
                     </div>
 
                     <div class="bottom">
-                        <span id="pers-info-btn" onclick="enablePersInfoFunc()">Personal Information</span>
-                        <span id="bil-info-btn" onclick="enableBillingInfoFunc()">Billing Information</span>
-                        <span id="hist-info-btn" onclick="enableHistInfoFunc()">Order History</span>
+                        <span id="pers-info-btn" onclick="enablePersInfoFunc()" data-i18="acc-page-personal-info">Personal Information</span>
+                        <span id="bil-info-btn" onclick="enableBillingInfoFunc()" data-i18="acc-page-billing-info">Billing Information</span>
+                        <span id="hist-info-btn" onclick="enableHistInfoFunc()" data-i18="acc-page-order-hist">Order History</span>
                     </div>
                 </div>
 
                 <div id="personal-info" class="right-panel">
                     <div class="common-info">
-                        <span class="title">Personal Information</span>
-                        <span class="small">Manage your personal information, including name, email and your username</span>
+                        <span class="title" data-i18="acc-page-personal-info">Personal Information</span>
+                        <span class="small" data-i18="acc-page-personal-info-desc">Manage your personal information, including name, email and your username</span>
                     </div>
 
                     <div class="blocks-info">
                         <div class="text-block">
                             <div class="left">
                                 <?php
-                                    echo "<span class='bold'>Username</span>";
+                                    echo "<span class='bold' data-i18='acc-page-username'>Username</span>";
                                     echo "<span class='grey'>$username</span>";
                                 ?>
                             </div>
@@ -86,7 +86,7 @@
                         <div class="text-block">
                             <div class="left">
                                 <?php
-                                    echo "<span class='bold'>Name</span>";
+                                    echo "<span class='bold' data-i18='acc-page-name'>Name</span>";
                                     echo "<span class='grey'>$name</span>";
                                 ?>
                             </div>
@@ -99,7 +99,7 @@
                         <div class="text-block">
                             <div class="left">
                                 <?php
-                                    echo "<span class='bold'>Email</span>";
+                                    echo "<span class='bold' data-i18='acc-page-email'>Email</span>";
                                     echo "<span class='grey'>$email</span>";
                                 ?>
                             </div>
@@ -111,7 +111,7 @@
 
                         <div class="text-block">
                             <div class="left">
-                                <span class="bold">Country</span>
+                                <span class="bold" data-i18='acc-page-country'>Country</span>
                                 <span class="grey">Russia</span>
                             </div>
 
@@ -124,14 +124,14 @@
 
                 <div id="billing-info" class="right-panel">
                     <div class="common-info">
-                        <span class="title">Billing Information</span>
-                        <span class="small">Manage your billing information</span>
+                        <span class="title" data-i18="acc-page-billing-info">Billing Information</span>
+                        <span class="small" data-i18="acc-page-billing-info-desc">Manage your billing information</span>
                     </div>
 
                     <div class="blocks-info">
                         <div class="text-block">
                             <div class="left">
-                                <span class="bold">Credit Card</span>
+                                <span class="bold" data-i18="acc-page-billing-credit">Credit Card</span>
                                 <span class="grey">Visa, Mastercard</span>
                             </div>
 
@@ -142,8 +142,8 @@
 
                         <div class="text-block">
                             <div class="left">
-                                <span class="bold">PayPal</span>
-                                <span class="grey">Fast and secure</span>
+                                <span class="bold" data-i18="acc-page-billing-paypal">PayPal</span>
+                                <span class="grey" data-i18="acc-page-billing-paypal-desc">Fast and secure</span>
                             </div>
 
                             <div class="right">
@@ -153,8 +153,8 @@
 
                         <div class="text-block">
                             <div class="left">
-                                <span class="bold">Online</span>
-                                <span class="grey">Fast and secure</span>
+                                <span class="bold" data-i18="acc-page-billing-paypal">Online</span>
+                                <span class="grey" data-i18="acc-page-billing-paypal-desc">Fast and secure</span>
                             </div>
 
                             <div class="right">
@@ -166,8 +166,8 @@
 
                 <div id="order-history-info" class="right-panel">
                     <div class="common-info">
-                        <span class="title">Order History</span>
-                        <span class="small">Watch your order history</span>
+                        <span class="title" data-i18="acc-page-order-hist">Order History</span>
+                        <span class="small" data-i18="acc-page-order-hist-desc">Watch your order history</span>
                     </div>
 
                     <div class="blocks-info-hist">
@@ -179,7 +179,7 @@
 
                             foreach ($orders_array as $name => $info_array) {
                                 $creation_date = date('d F Y', strtotime($info_array['creation_date']));
-                                $price = '$'.$info_array['price'].' | '.$info_array['amount'].'pcs';
+                                $price = '$'.$info_array['price'].' | '.$info_array['amount'].'<span data-i18="acc-page-order-hist-pcs">pcs</span>';
                                 echo "
                                     <div class='text-block'>
                                         <div class='left'>
@@ -201,6 +201,8 @@
     </section>
 
     <?php include('templates/footer.php'); ?>
+
+    <script type="module" src="js/translator.js"></script>
 </body>
 
 </html>

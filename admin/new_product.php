@@ -13,6 +13,7 @@
 
 <body>
     <?php include('templates/header.php'); ?>
+    <?php include('support/translator.php'); ?>
 
     <?php
         include '../server/db_connection.php';
@@ -21,7 +22,14 @@
         $info_message = '';
         if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['price']) && isset($_POST['calories'])) {
             $name = trim($_POST['name']);
+            $name = str_replace('_', ' ', $name);
+            $name = str_replace('-', ' ', $name);
+            $name = ucwords($name);
+
             $category = trim($_POST['category']);
+            $category = str_replace('_', ' ', $category);
+            $category = str_replace('-', ' ', $category);
+
             $price = trim($_POST['price']);
             $calories = trim($_POST['calories']);
 
@@ -55,8 +63,22 @@
                     }
 
                     $info_message = $info_message.' '.'Successfully added '.$name;
-                    header("Location: products.php?action=add");
-                    die;
+
+                    $category = strtolower($category);
+                    $category = str_replace(' ', '-', $category);
+
+                    $main_name = $name;
+                    $name = strtolower($name);
+                    $name = str_replace(' ', '-', $name);
+                    $translate_key = 'products-'.$category.'-'.$name;
+
+                    $translate_value = $main_name;
+                    if (insert_text_to_translations($translate_key, $translate_value)) {
+                        header("Location: products.php?action=add");
+                        die;
+                    } else {
+                        $info_message = $info_message.' '.'Something went wrong';
+                    }
                 } else {
                     $info_message = $info_message.' '.'Something went wrong';
                 }

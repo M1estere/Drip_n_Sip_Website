@@ -60,10 +60,10 @@
                 </div>
                 <div class="info">
                     <div class="title">
-                        Delivery
+                        <span data-i18="main-notes-delivery">Delivery</span>
                     </div>
                     <div class="desc">
-                        Over the whole world
+                    <span data-i18="main-notes-delivery-desc">Over the whole world</span>
                     </div>
                 </div>
             </div>
@@ -74,10 +74,10 @@
                 </div>
                 <div class="info">
                     <div class="title">
-                        Gifts
+                        <span data-i18="main-notes-gifts">Gifts</span>
                     </div>
                     <div class="desc">
-                        For all customers
+                        <span data-i18="main-notes-gifts-desc">For all customers</span>
                     </div>
                 </div>
             </div>
@@ -88,10 +88,10 @@
                 </div>
                 <div class="info">
                     <div class="title">
-                        Sales
+                        <span data-i18="main-notes-sales">Sales</span>
                     </div>
                     <div class="desc">
-                        On regular basis
+                        <span data-i18="main-notes-sales-desc">On regular basis</span>
                     </div>
                 </div>
             </div>
@@ -102,10 +102,10 @@
                 </div>
                 <div class="info">
                     <div class="title">
-                        Support
+                        <span data-i18="main-notes-support">Support</span>
                     </div>
                     <div class="desc">
-                        Working for you 24/7
+                        <span data-i18="main-notes-support-desc">Working for you 24/7</span>
                     </div>
                 </div>
             </div>
@@ -114,30 +114,30 @@
 
     <section class="top-categories-wrapper">
         <div class="top-categories-region container">
-            <p style="color: #03262A;" align="center">Top Categories</p>
+            <p style="color: #03262A;" align="center" data-i18="main-top-categories">Top Categories</p>
 
             <div class="cat-buttons-region">
                 <a href="products_display.php?category=mocha">
                     <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-1.webp'); background-repeat: no-repeat; background-size: cover;">
-                        mocha
+                        <span data-i18="main-top-categories-mocha">mocha</span>
                         <hr style="height: 5px; width: 10%; border: none; background-color: white;">
-                        <p>View More</p>
+                        <p data-i18="main-top-categories-view-more">View More</p>
                     </div>
                 </a>
 
                 <a href="products_display.php?category=latte">
                     <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-2.jpg');  background-repeat: no-repeat; background-size: cover;">
-                        latte
+                        <span data-i18="main-top-categories-latte">latte</span>
                         <hr style="height: 5px; width: 10%; border: none; background-color: white;">
-                        <p>View More</p>
+                        <p data-i18="main-top-categories-view-more">View More</p>
                     </div>
                 </a>
 
                 <a href="products_display.php?category=cappuccino">
                     <div class="cat-button" style="background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('assets/categories/cup-3.jpg');  background-repeat: no-repeat; background-size: cover;">
-                        cappuccino
+                        <span data-i18="main-top-categories-cappuccino">cappuccino</span>
                         <hr style="height: 5px; width: 10%; border: none; background-color: white;">
-                        <p>View More</p>
+                        <p data-i18="main-top-categories-view-more">View More</p>
                     </div>
                 </a>
             </div>
@@ -146,16 +146,16 @@
 
     <section class="top-prod-wrapper">
         <div class="top-prod-region container">
-            <p style="color: #03262A;" align="center">Top Products</p>
+            <p style="color: #03262A;" align="center" data-i18="main-top-products">Top Products</p>
 
             <div class="prod-buttons-region">
-                <div id="featured-button" class="prod-button" onclick="openFeatured()">
+                <div id="featured-button" class="prod-button" onclick="openFeatured()" data-i18="main-top-products-featured">
                     featured
                 </div>
-                <div id="hottest-button" class="prod-button" onclick="openHottest()">
+                <div id="hottest-button" class="prod-button" onclick="openHottest()" data-i18="main-top-products-hottest">
                     hottest
                 </div>
-                <div id="best-button" class="prod-button" onclick="openBest()">
+                <div id="best-button" class="prod-button" onclick="openBest()" data-i18="main-top-products-best">
                     bestseller
                 </div>
             </div>
@@ -172,7 +172,15 @@
                         $link = 'index.php?product_id='.$product_info['id'];
 
                         $category = $product_info['category'];
+                        $category = strtolower($category);
+                        $category = str_replace(' ', '-', $category);
+
                         $name = $product_info['name'];
+                        $name = strtolower($name);
+                        $name = str_replace(' ', '-', $name);
+
+                        $key_to_check = 'products-'.$category.'-'.$name;
+
                         $price = '$'.$product_info['price'];
                         $calories = $product_info['calories'];
                         $picture_path = 'assets/coffee-products/'.$product_info['picture'];
@@ -187,14 +195,17 @@
                                     <img src='$picture_path'>
                                 </div>
                                 <div class='info'>
-                                    <p align='center'>$name</p>
+                                    <p align='center' data-i18='$key_to_check'>$name</p>
                                     <div class='outer'>
                                         <a href='$link'>
                                             <img src='assets/icons/simple/shop_brown.png'>
                                         </a>
                                         <div class='right'>
                                             <span id='price'>$price</span>
-                                            <span id='calories'>{$calories}cal</span>
+                                            <div>
+                                                <span id='calories'>{$calories} </span>
+                                                <span id='calories' data-i18='cal-title'>cal</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +227,15 @@
                         $link = 'index.php?product_id='.$product_info['id'];
 
                         $category = $product_info['category'];
+                        $category = strtolower($category);
+                        $category = str_replace(' ', '-', $category);
+
                         $name = $product_info['name'];
+                        $name = strtolower($name);
+                        $name = str_replace(' ', '-', $name);
+
+                        $key_to_check = 'products-'.$category.'-'.$name;
+
                         $price = '$'.$product_info['price'];
                         $calories = $product_info['calories'];
                         $picture_path = 'assets/coffee-products/'.$product_info['picture'];
@@ -231,14 +250,17 @@
                                     <img src='$picture_path'>
                                 </div>
                                 <div class='info'>
-                                    <p align='center'>$name</p>
+                                    <p align='center' data-i18='$key_to_check'>$name</p>
                                     <div class='outer'>
                                         <a href='$link'>
                                             <img src='assets/icons/simple/shop_brown.png'>
                                         </a>
                                         <div class='right'>
                                             <span id='price'>$price</span>
-                                            <span id='calories'>{$calories}cal</span>
+                                            <div>
+                                                <span id='calories'>{$calories} </span>
+                                                <span id='calories' data-i18='cal-title'>cal</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +282,15 @@
                         $link = 'index.php?product_id='.$product_info['id'];
 
                         $category = $product_info['category'];
+                        $category = strtolower($category);
+                        $category = str_replace(' ', '-', $category);
+
                         $name = $product_info['name'];
+                        $name = strtolower($name);
+                        $name = str_replace(' ', '-', $name);
+
+                        $key_to_check = 'products-'.$category.'-'.$name;
+
                         $price = '$'.$product_info['price'];
                         $calories = $product_info['calories'];
                         $picture_path = 'assets/coffee-products/'.$product_info['picture'];
@@ -275,14 +305,17 @@
                                     <img src='$picture_path'>
                                 </div>
                                 <div class='info'>
-                                    <p align='center'>$name</p>
+                                    <p align='center' data-i18='$key_to_check'>$name</p>
                                     <div class='outer'>
                                         <a href='$link'>
                                             <img src='assets/icons/simple/shop_brown.png'>
                                         </a>
                                         <div class='right'>
                                             <span id='price'>$price</span>
-                                            <span id='calories'>{$calories}cal</span>
+                                            <div>
+                                                <span id='calories'>{$calories} </span>
+                                                <span id='calories' data-i18='cal-title'>cal</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -306,26 +339,33 @@
 
     <section class="blogs-wrapper">
         <div class="blogs-region container">
-            <p id="title" align="center">Latest Blogs</p>
+            <p id="title" align="center" data-i18="main-latest-blogs">Latest Blogs</p>
 
             <div class="blogs-section">
                 <?php
                     include 'server/get_blogs.php';
 
-                    $blogs = blogs();
+                    $blogs = blogs(3);
                     foreach ($blogs as $num => $blog_info) {
                         $text = $blog_info['text'];
                         $picture_path = 'assets/'.$blog_info['picture'];
                         $title = $blog_info['title'];
                         $blog_date = date('d F Y', strtotime($blog_info['date']));
 
+                        $temp_title = $title;
+                        $temp_title = strtolower($temp_title);
+                        $temp_title = str_replace(' ', '-', $temp_title);
+                        $temp_picture_path = pathinfo($picture_path, PATHINFO_FILENAME);
+                        $key_to_check = 'blogs-'.$temp_picture_path.'-'.$temp_title;
+                        $desc_key = $key_to_check.'-desc';
+
                         echo "
                             <div class='blog'>
                                 <img src=$picture_path>
                                 <div class='info'>
-                                    <p id='reg'>$title</p>
+                                    <p id='reg' data-i18='$key_to_check'>$title</p>
                                     <span class='colored'>$blog_date</span><br>
-                                    <span class='reg'>$text</span>
+                                    <span class='reg' data-i18='$desc_key'>$text</span>
                                 </div>
                             </div>
                         ";
@@ -336,6 +376,8 @@
     </section>
 
     <?php include('templates/footer.php'); ?>
+
+    <script type="module" src="js/translator.js"></script>
 </body>
 
 </html>

@@ -10,6 +10,7 @@
 
 <body>
     <?php include('templates/header.php'); ?>
+    <?php include('support/translator.php'); ?>
 
     <?php
         include '../server/db_connection.php';
@@ -37,13 +38,25 @@
             if ($query) {
                 $blog = mysqli_fetch_array($query);
                 if ($blog) {
+                    $picture_to_save = $blog['picture'];
                     $name = $blog['title'];
 
                     $request = "DELETE FROM blogs WHERE id = '$id';";
     
                     $query = mysqli_query($server_connection, $request);
                     if ($query) {
-                        $info_message = $info_message.' '.'Successfully deleted '.$name.' blog';
+                        $temp_title = $name;
+                        $temp_title = strtolower($temp_title);
+                        $temp_title = str_replace(' ', '-', $temp_title);
+                        unlink(realpath('../assets/'.$blog['picture']));
+                        $temp_picture_path = pathinfo($picture_to_save, PATHINFO_FILENAME);
+                        $key_to_check = 'blogs-'.$temp_picture_path.'-'.$temp_title;
+                        $desc_key = $key_to_check.'-desc';
+
+                        if (delete_text_from_translations($key_to_check) && delete_text_from_translations($desc_key))
+                            $info_message = $info_message.' '.'Successfully deleted '.$name.' blog';
+                        else 
+                            $info_message = 'Something went wrong!';
                     } else {
                         $info_message = $info_message.' '.'Some error occured when deleting '.$name.' blog';
                     }

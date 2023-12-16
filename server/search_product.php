@@ -30,6 +30,7 @@
 
                 $result_array[$product_name]['id'] = $product['id'];
                 $result_array[$product_name]['name'] = $product['name'];
+                $result_array[$product_name]['category'] = $product['type'];
                 $result_array[$product_name]['price'] = $product['price'];
                 $result_array[$product_name]['calories'] = $product['calories'];
                 $result_array[$product_name]['picture'] = $product['picture'];

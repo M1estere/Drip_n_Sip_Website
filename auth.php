@@ -23,8 +23,8 @@
                 </div>
 
                 <div class="middle-block"><br>
-                    <p>Welcome to Drip & Sip</p>
-                    <span>Inspiring people on great things</span>
+                    <p data-i18="auth-welcome">Welcome to Drip & Sip</p>
+                    <span data-i18="auth-welcome-desc">Inspiring people on great things</span>
                 </div>
 
                 <div class="bottom-block">
@@ -44,8 +44,8 @@
 
                 <div class="auth-forms">
                     <div class="buttons-region">
-                        <button id="register-button" type="button" class="toggle-button" onclick="register()">REGISTER</button>
-                        <button id="login-button" type="button" class="toggle-button" onclick="login()">LOGIN</button>
+                        <button id="register-button" type="button" class="toggle-button" onclick="register()" data-i18="auth-register-title">REGISTER</button>
+                        <button id="login-button" type="button" class="toggle-button" onclick="login()" data-i18="auth-login-title">LOGIN</button>
                     </div>
 
                     <?php
@@ -71,11 +71,11 @@
                             global $reg_error;
 
                             if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                                $reg_error = 'Enter a valid email';
+                                $reg_error = '<span data-i18="auth-valid-email">Enter a valid email</span>';
                             }
 
                             if (trim($data['password']) < 4) {
-                                $reg_error = 'Enter a correct password';
+                                $reg_error = '<span data-i18="auth-valid-pass">Enter a correct password</span>';
                             }
 
                             if (strlen($reg_error) == 0) {
@@ -108,13 +108,13 @@
                                             header('location: /../index.php');
                                             die;
                                         } else {
-                                            $reg_error = 'Some error occured when fetching user';
+                                            $reg_error = '<span data-i18="auth-fetch-user-error">Some error occured when fetching user</span>';
                                         }
                                     } else {
-                                        $reg_error = 'Some error occured when fetching database';
+                                        $reg_error = '<span data-i18="auth-fetch-db-error">Some error occured when fetching database</span>';
                                     }
                                 } else {
-                                    $reg_error = 'User already exists';
+                                    $reg_error = '<span data-i18="auth-user-exists">User already exists</span>';
                                 }                                
                             }
                         }
@@ -151,22 +151,22 @@
                                     header('Location: index.php');
                                     die;
                                 } else {
-                                    $log_error = 'Wrong password';
+                                    $log_error = '<span data-i18="auth-wrong-pass">Wrong password</span>';
                                 }
                             } else {
-                                $log_error = 'User does not exist';
+                                $log_error = '<span data-i18="auth-no-user">User does not exist</span>';
                             }
                         }
                     ?>
 
                         <div class="forms-region">
                             <form method="POST" id="register" class="input-group">
-                                <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required value=''>
-                                <input type="text" name="name" class="input-field" placeholder="Name" minlength="3" required>
-                                <input type="email" name="email" class="input-field" placeholder="E-mail" required>
-                                <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
+                                <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required value='' data-i18="auth-username-field">
+                                <input type="text" name="name" class="input-field" placeholder="Name" minlength="3" required data-i18="auth-name-field">
+                                <input type="email" name="email" class="input-field" placeholder="E-mail" required data-i18="auth-email-field">
+                                <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required data-i18="auth-pass-field"><br>
 
-                                <button type="submit" class="submit-button">SIGN UP</button>
+                                <button type="submit" class="submit-button" data-i18="auth-sign-up-btn">SIGN UP</button>
 
                                 <?php
                                 echo "
@@ -176,10 +176,10 @@
                             </form>
 
                             <form method="POST" id="login" class="input-group">
-                                <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required>
-                                <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required><br>
+                                <input type="text" name="username" class="input-field" placeholder="Username" minlength="3" required data-i18="auth-username-field">
+                                <input type="password" name="password" class="input-field" placeholder="Password" minlength="4" required data-i18="auth-pass-field"><br>
 
-                                <button type="submit" class="submit-button">LOGIN</button>
+                                <button type="submit" class="submit-button" data-i18="auth-login-btn">LOGIN</button>
 
                                 <?php
                                 echo "
@@ -192,6 +192,8 @@
             </div>
         </div>
     </section>
+
+    <script type="module" src="js/translator.js"></script>
 </body>
 
 </html>

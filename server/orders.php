@@ -14,7 +14,7 @@
         if ($query) {
             $counter = 1;
             while ($order = mysqli_fetch_array($query)) {
-                $order_name = 'Order '.$counter;
+                $order_name = '<span data-i18="order-title">Order </span>'.$counter;
                 
                 $result_array[$order_name]['amount'] = $order['amount'];
                 $result_array[$order_name]['price'] = $order['price'];

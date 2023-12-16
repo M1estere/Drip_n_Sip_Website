@@ -3,13 +3,13 @@
         <div class="main-footer-container container">
             <div class="contact-info-region">
                 <div class="info">
-                    <p>contact info</p>
+                    <p data-i18="footer-contact-info">contact info</p>
                     <div>
-                        <span>Address:&nbsp</span>
-                        <span>RTU MIREA, pr. Vernadskogo 78/2</span>
+                        <span data-i18="footer-address">Address:</span><span>&nbsp</span>
+                        <span data-i18="footer-address-desc">RTU MIREA, pr. Vernadskogo 78/2</span>
                     </div>
-                    <span>Phone: 123-456-7890</span><br><br>
-                    <span>Email: 7156643@gmail.com</span><br>
+                    <span data-i18="footer-phone">Phone:</span><span>123-456-7890</span><br><br>
+                    <span data-i18="footer-email">Email: 7156643@gmail.com</span><br>
                 </div>
 
                 <div class="icons">
@@ -21,27 +21,27 @@
             </div>
 
             <div class="information-region">
-                <p>information</p>
-                <div><a id="open-about-button">About Us</a></div>
-                <div><a id="open-deliv-button">Delivery Information</a></div>
-                <div><a id="open-contacts-button">Privacy Policy</a></div>
-                <div><a id="open-contacts-button">Contact Us</a></div>
+                <p data-i18="footer-information">information</p>
+                <div><a id="open-about-button" data-i18="footer-about-us">About Us</a></div>
+                <div><a id="open-deliv-button" data-i18="footer-delivery">Delivery Information</a></div>
+                <div><a id="open-contacts-button" data-i18="footer-privacy">Privacy Policy</a></div>
+                <div><a id="open-contacts-button" data-i18="footer-contact">Contact Us</a></div>
             </div>
 
             <div class="account-region">
-                <p>account</p>
-                <div><a href="account_page.php">Account Settings</a></div>
-                <div><a href="account_page.php">Order History</a></div>
-                <div><a href="account_page.php">Newsletter</a></div>
+                <p data-i18="footer-account">account</p>
+                <div><a href="account_page.php" data-i18="footer-acc-settings">Account Settings</a></div>
+                <div><a href="account_page.php" data-i18="footer-acc-orders">Order History</a></div>
+                <div><a href="account_page.php" data-i18="footer-acc-news">Newsletter</a></div>
             </div>
 
             <div class="newsletter-region">
-                <p>newsletter</p>
-                <span>Subscribe to our newsletter to keep all the info fresh</span><br><br>
+                <p data-i18="footer-acc-news">newsletter</p>
+                <span data-i18="footer-subscribe">Subscribe to our newsletter to keep all the info fresh</span><br><br>
 
                 <form>
                     <input type="email" placeholder="Enter your e-mail..." name="email" required>
-                    <button type="submit">subscribe</button>
+                    <button type="submit" data-i18="footer-sub-btn">subscribe</button>
                 </form>
             </div>
         </div>

@@ -13,16 +13,27 @@
 
 <body>
     <?php include('templates/header.php'); ?>
+    <?php include('support/translator.php'); ?>
 
     <?php
         include '../server/db_connection.php';
 
         $extensions = ['png', 'webp'];
         $info_message = '';
-        if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['category']) && isset($_POST['price']) && isset($_POST['calories'])) {
+        if (isset($_POST['start_name']) && isset($_POST['id']) && isset($_POST['name']) && isset($_POST['category']) && isset($_POST['price']) && isset($_POST['calories'])) {
+            $start_name = $_POST['start_name'];
+            
             $id = $_POST['id'];
-            $name = $_POST['name'];
-            $category = $_POST['category'];
+            
+            $name = trim($_POST['name']);
+            $name = str_replace('_', ' ', $name);
+            $name = str_replace('-', ' ', $name);
+            $name = ucwords($name);
+
+            $category = trim($_POST['category']);
+            $category = str_replace('_', ' ', $category);
+            $category = str_replace('-', ' ', $category);
+
             $price = $_POST['price'];
             $calories = $_POST['calories'];
             
@@ -55,8 +66,22 @@
                 $temp_name = str_replace(' ', '_', $temp_name);
                 $temp_name = strtolower($temp_name);
                 $get = 'action=change&change_name='.$temp_name;
-                header("Location: products.php?".$get);
-                die;
+
+                $category = strtolower($category);
+                $category = str_replace(' ', '-', $category);
+
+                $main_name = $name;
+                $name = strtolower($name);
+                $name = str_replace(' ', '-', $name);
+                $translate_key = 'products-'.$category.'-'.$name;
+
+                $translate_value = $main_name;
+                if (delete_text_from_translations($start_name) && insert_text_to_translations($translate_key, $translate_value)) {
+                    header("Location: products.php?action=add");
+                    die;
+                } else {
+                    $info_message = $info_message.' '.'Something went wrong';
+                }
             } else {
                 $info_message = $info_message.' '.'Something went wrong...';
             }
@@ -84,6 +109,16 @@
                         $name = str_replace('_', ' ', $name);
                         $name = ucwords($name);
                         $category = $_GET['category'];
+
+                        $temp_name = trim($name);
+                        $temp_name = str_replace(' ', '-', $temp_name);
+                        $temp_name = strtolower($temp_name);
+
+                        $temp_category = trim($category);
+                        $temp_category = str_replace(' ', '-', $temp_category);
+                        $temp_category = strtolower($temp_category);
+
+                        $old_path = 'products-'.$temp_category.'-'.$temp_name;
 
                         if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['category']) && isset($_POST['price']) && isset($_POST['calories'])) {
                             $request = "SELECT * FROM products WHERE id = '$id';";
@@ -126,6 +161,7 @@
                                 <div class='form-block'>
                                     <p>Product Name</p>
                                     <input type='text' name='name' placeholder='New product name...' value='$name' required>
+                                    <input type='text' name='start_name' hidden value='$old_path'>
                                 </div>
                         ";
 

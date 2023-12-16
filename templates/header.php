@@ -4,11 +4,11 @@
     <div class="top-black-wrapper">
         <div class="top-black-bar container">
             <div>
-                Welcome to our shop!
+                <span data-i18="header-welcome">Welcome to our shop!</span>
             </div>
 
-            <div>
-                Language EN-US
+            <div class="switch-lang-button">
+                <span class="switch-lang-btn btn-lang" data-language="en">Language EN-US</span>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
                     <img src="assets/icons/simple/service_black.png">
                 </div>
                 <div class="support-texts-region">
-                    Customer Support<br> 123-456-7890
+                    <span data-i18="header-support">Customer Support</span><br><span>123-456-7890</span>
                 </div>
             </div>
 
@@ -61,16 +61,16 @@
     <div class="nav-bar-wrapper">
         <div class="nav-bar-full container">
             <div class="nav-menu">
-                <div><a href="index.php">home</a></div>
-                <div><a href="products_display.php?category=mocha">iced mocha</a></div>
-                <div><a href="products_display.php?category=espresso">espresso</a></div>
-                <div><a href="products_display.php?category=cappuccino">cappuccino</a></div>
-                <div><a href="products_display.php">more</a></div>
+                <div><a href="index.php" data-i18="header-nav-home">home</a></div>
+                <div><a href="products_display.php?category=mocha" data-i18="header-nav-mocha">iced mocha</a></div>
+                <div><a href="products_display.php?category=espresso" data-i18="header-nav-espresso">espresso</a></div>
+                <div><a href="products_display.php?category=cappuccino" data-i18="header-nav-cappuccino">cappuccino</a></div>
+                <div><a href="products_display.php" data-i18="header-nav-more">more</a></div>
             </div>
 
             <div class="search-container">
                 <form method="GET" action="products_display.php">
-                    <input type="text" placeholder="Search..." name="category" required minLength="1">
+                    <input type="text" placeholder="Search..." data-i18="header-nav-search" name="category" required minLength="1">
                     <input hidden type="text" placeholder="Search..." name="search" value="true">
 
                     <button type="submit">

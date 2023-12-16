@@ -57,6 +57,10 @@ body::-webkit-scrollbar {
     text-transform: uppercase;
 }
 
+.top-black-bar .switch-lang-btn {
+    cursor: pointer;
+}
+
 .top-white-bar {
     display: flex;
     justify-content: space-between;

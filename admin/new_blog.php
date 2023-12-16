@@ -12,6 +12,7 @@
 
 <body>
     <?php include('templates/header.php'); ?>
+    <?php include('support/translator.php'); ?>
 
     <?php
         include '../server/db_connection.php';
@@ -25,8 +26,7 @@
 
             $picture = $_FILES['picture'];
 
-            $time = time();
-            $picture_name = $time.'_'.$picture['name'];
+            $picture_name = $picture['name'];
             $temp_name = $picture['tmp_name'];
 
             $low_cat = strtolower($category);
@@ -53,9 +53,20 @@
                         $info_message = 'Image uploaded successfully!';
                     }
 
-                    $info_message = $info_message.' '.'Successfully added '.$name;
-                    header("Location: blogs.php?action=add");
-                    die;
+                    $temp_title = $title;
+                    $temp_title = strtolower($temp_title);
+                    $temp_title = str_replace(' ', '-', $temp_title);
+                    $temp_picture_path = pathinfo($picture_to_save, PATHINFO_FILENAME);
+                    $key_to_check = 'blogs-'.$temp_picture_path.'-'.$temp_title;
+                    $desc_key = $key_to_check.'-desc';
+
+                    if (insert_text_to_translations($key_to_check, $title) && insert_text_to_translations($desc_key, $text)) {
+                        $info_message = $info_message.' '.'Successfully added '.$name;
+                        header("Location: blogs.php?action=add");
+                        die;
+                    } else {
+                        $info_message = $info_message.' '.'Something went wrong';
+                    }
                 } else {
                     $info_message = $info_message.' '.'Something went wrong';
                 }

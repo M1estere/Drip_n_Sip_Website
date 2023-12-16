@@ -37,17 +37,17 @@
     <section class="main-info-wrapper">
         <div class="main-info container">
             <div class="top-text">
-                <span>Your Cart</span>
+                <span data-i18="cart-title">Your Cart</span>
             </div>
 
             <div class="central-block">
                 <div class="products-region">
                     <table class="cart-table">
                         <tr>
-                            <td>PRODUCTS</td>
-                            <td>PRICE</td>
-                            <td>QUANTITY</td>
-                            <td>TOTAL</td>
+                            <td data-i18="cart-products-title">PRODUCTS</td>
+                            <td data-i18="cart-price-title">PRICE</td>
+                            <td data-i18="cart-quantity-title">QUANTITY</td>
+                            <td data-i18="cart-total-title">TOTAL</td>
                             <td class="last-col"></td>
                         </tr>
                             <?php
@@ -129,14 +129,14 @@
                 <div class="left-container">
                     <div class="total-info-block">
                         <div class="sum-info-block">
-                            <span class="title">Order Summary</span><br>
+                            <span class="title" data-i18="cart-summary">Order Summary</span><br>
                             <hr width="100%" align="center" color="black">
 
                             <div class="info-block">
                                 <div class="titles">
-                                    <span>Positions</span>
-                                    <span>Subtotal</span>
-                                    <span>Delivery Cost</span>
+                                    <span data-i18="cart-postions">Positions</span>
+                                    <span data-i18="cart-subtotal">Subtotal</span>
+                                    <span data-i18="cart-del-cost">Delivery Cost</span>
                                 </div>
                                 <div class="prices-info">
                                     <?php
@@ -166,7 +166,7 @@
                                 </div>
                             </div>
                             <form class="discount-form">
-                                <input type="text" placeholder="Enter discount...">
+                                <input type="text" placeholder="Enter discount..." data-i18="cart-discount-region">
                             </form>
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                             if (isset($_SESSION['cart_size']) && $_SESSION['cart_size'] > 0) {
                                 echo "
                                     <form action='order_confirmation.php' method='GET'>
-                                        <button class='checkout-button'>checkout</button>
+                                        <button class='checkout-button' data-i18='cart-checkout-btn'>checkout</button>
                                     </form>
                                 ";
                             }
@@ -188,6 +188,8 @@
     </section>
 
     <?php include('templates/footer.php')?>
+
+    <script type="module" src="js/translator.js"></script>
 </body>
 
 </html>

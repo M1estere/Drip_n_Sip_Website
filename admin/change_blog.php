@@ -12,6 +12,7 @@
 
 <body>
     <?php include('templates/header.php'); ?>
+    <?php include('support/translator.php'); ?>
 
     <?php
         include '../server/db_connection.php';
@@ -27,10 +28,19 @@
                 if ($blog) {
                     $date = $blog['date'];
                     $title = $blog['title'];
-                    $text = $blog['text'];
 
+                    $temp_title = $title;
+                    $temp_title = strtolower($temp_title);
+                    $temp_title = str_replace(' ', '-', $temp_title);
+                    
+                    $text = $blog['text'];
+                    
                     $picture = $blog['picture'];
                     $picture_path = '../assets/'.$picture;
+                    $temp_picture_path = pathinfo($picture_path, PATHINFO_FILENAME);
+
+                    $old_path = 'blogs-'.$temp_picture_path.'-'.$temp_title;
+                    $old_path_desc = $old_path.'-desc';
                 } else {
                     header("Location: blogs.php");
                     die;
@@ -45,14 +55,16 @@
     <?php
         $extensions = ['png', 'webp'];
         $info_message = '';
-        if (isset($_POST['id']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['date'])) {
+        if (isset($_POST['start_name_desc']) && isset($_POST['start_name']) && isset($_POST['id']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['date'])) {
+            $start_desc_name = $_POST['start_name_desc'];
+            $start_name = $_POST['start_name'];
+            
             $id = $_POST['id'];
             $title = $_POST['title'];
             $text = $_POST['text'];
             $date = $_POST['date'];
 
-            $time = time();
-            $picture_name = $time.'_'.$_FILES['picture']['name'];
+            $picture_name = $_FILES['picture']['name'];
             
             $low_cat = strtolower($category);
             $picture_to_save = $low_cat.'/'.$picture_name;
@@ -81,8 +93,23 @@
                 $temp_name = str_replace(' ', '_', $temp_name);
                 $temp_name = strtolower($temp_name);
                 $get = 'action=change&change_name='.$temp_name;
-                header("Location: blogs.php?".$get);
-                die;
+                
+                $temp_title = $title;
+                $temp_title = strtolower($temp_title);
+                $temp_title = str_replace(' ', '-', $temp_title);
+                
+                $desc_arr = explode('-', $start_name);
+                $temp_picture_path = $desc_arr[1];
+                $key_to_check = 'blogs-'.$temp_picture_path.'-'.$temp_title;
+                $desc_key = $key_to_check.'-desc';
+
+                if (delete_text_from_translations($start_desc_name) && delete_text_from_translations($start_name) && insert_text_to_translations($key_to_check, $title) && insert_text_to_translations($desc_key, $text)) {
+                    $info_message = $info_message.' '.'Successfully added '.$name;
+                    header("Location: blogs.php?action=add");
+                    die;
+                } else {
+                    $info_message = $info_message.' '.'Something went wrong';
+                }
             } else {
                 $info_message = $info_message.' '.'Something went wrong...';
             }
@@ -123,6 +150,8 @@
                                 <div class='form-block'>
                                     <p>Blog Title</p>
                                     <input type='text' required minlength='5' name='title' placeholder='Blog title...' value='$title'>
+                                    <input type='text' name='start_name' hidden value='$old_path'>
+                                    <input type='text' name='start_name_desc' hidden value='$old_path_desc'>
                                 </div>
                             ";
 

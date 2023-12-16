@@ -3,7 +3,7 @@
 
     include 'db_connection.php';
 
-    function blogs() {
+    function blogs($amount) {
         global $server_connection;
 
         $res_array = array();
@@ -24,6 +24,7 @@
             }
         }
 
-        return $res_array;
+        shuffle($res_array);
+        return array_slice($res_array, 0, $amount);
     }
 ?>
