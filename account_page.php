@@ -153,7 +153,7 @@
 
                         <div class="text-block">
                             <div class="left">
-                                <span class="bold" data-i18="acc-page-billing-paypal">Online</span>
+                                <span class="bold" data-i18="acc-page-billing-online">Online</span>
                                 <span class="grey" data-i18="acc-page-billing-paypal-desc">Fast and secure</span>
                             </div>
 
