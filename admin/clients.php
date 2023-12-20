@@ -21,14 +21,30 @@
                 <?php
                     include '../server/db_connection.php';
 
-                    $request = "SELECT * FROM clients;";
+                    $request = "SELECT * FROM clients";
 
                     $query = mysqli_query($server_connection, $request);
                     if ($query) {
-                        while ($client = mysqli_fetch_array($query)) {
-                            echo "<div>";
+                        $request_2 = "SELECT count(user_id) as orders_amount FROM orders GROUP BY user_id ORDER BY orders_amount DESC LIMIT 1;";
+                        $query_temp = mysqli_query($server_connection, $request_2);
+                        $max_orders_amount = mysqli_fetch_array($query_temp)['orders_amount'];
 
+                        while ($client = mysqli_fetch_array($query)) {
+                            $is_max = false;
+                            echo "<div>";
+                            
                             $client_id = $client['id'];
+
+                            $request_t = "SELECT count(user_id) as amount FROM orders WHERE user_id = '$client_id';";
+                            $query_t = mysqli_query($server_connection, $request_t);
+                            if ($query_t) {
+                                $value = mysqli_fetch_array($query_t);
+                                $amount = $value['amount'];
+                                
+                                if ($amount == $max_orders_amount)                               
+                                    $is_max = true;
+                            }
+
                             $client_username = $client['username'];
                             $client_name = $client['name'];
                             $client_mail = $client['email'];
@@ -83,6 +99,9 @@
                                 echo "</div>";
                             }
 
+                            if ($is_max)
+                                echo "<div class='best-customer-region'>Our best customer</div>";
+    
                             echo "<hr noshade width='80%' style='margin-bottom: 50px;'>";
                             echo "</div>";
                         }
