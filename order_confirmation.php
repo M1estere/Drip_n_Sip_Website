@@ -145,13 +145,22 @@
 
                                         $total = (float)$price * (int)$amount;
 
+                                        $key_category = $product['type'];
+                                        $key_category = strtolower($key_category);
+                                        $key_category = str_replace(' ', '-', $key_category);
+
+                                        $key_name = $product['name'];
+                                        $key_name = strtolower($key_name);
+                                        $key_name = str_replace(' ', '-', $key_name);
+
+                                        $key_to_check = 'products-'.$key_category.'-'.$key_name;
                                         echo "<tr>";
                                         echo "
                                             <td>
                                                 <div class='product-section'>
                                                     <img src='$picture_path'>
                                                     <div class='info-texts'>
-                                                        <span class='title'>$name</span><br>
+                                                        <span class='title' data-i18='$key_to_check'>$name</span><br>
                                                         <span class='regular'>$category</span>
                                                     </div>
                                                 </div>
