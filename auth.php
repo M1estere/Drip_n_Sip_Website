@@ -126,19 +126,17 @@
                             $username = trim($data['username']);
                             $password = trim($data['password']);
                             
-                            if ($username == 'admin' && $password == 'admin') {
-                                $_POST = array();
-                                header('Location: admin/products.php');
-                                die;
-                            }
-
                             $request = "SELECT * FROM clients WHERE username = '{$username}';";
                             $query = mysqli_query($server_connection, $request);
 
                             $user = mysqli_fetch_array($query);
-
                             if ($user) {
                                 $user_password = $user['password'];
+                                if ($username == 'admin' && $password == $user_password) {
+                                    $_POST = array();
+                                    header('Location: admin/products.php');
+                                    die;
+                                }
 
                                 if ($user_password == $password) {
                                     session_start();
