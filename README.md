@@ -1,5 +1,5 @@
-## Drip & Sip Coffee Shop Website
-### <a href="http://coffee-shop.rf.gd/">Visit website</a>
+## Drip & Sip Coffee Shop
+### Simple project made using HTML, CSS, JavaScript. <a href="http://coffee-shop.rf.gd/">Visit website</a>
 
 ## Main Page
 <img alt="main_page" src="https://github.com/M1estere/Drip_n_Sip_Website/assets/58213582/5a80b88b-5b21-4a48-9a90-7039aa9324a4" />
