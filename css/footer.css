@@ -283,6 +283,8 @@ footer .footer-bottom .paying-systems img {
 }
 
 .contacts-popup {
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     display: flex;
     align-items: center;
@@ -349,6 +351,8 @@ footer .footer-bottom .paying-systems img {
 }
 
 .about-popup {
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     display: flex;
     align-items: center;
@@ -399,6 +403,8 @@ footer .footer-bottom .paying-systems img {
 }
 
 .delivery-popup {
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     display: flex;
     align-items: center;

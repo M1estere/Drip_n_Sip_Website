@@ -30,10 +30,14 @@
 
                     $products = search($_GET['category']);
                     foreach ($products as $name => $product_info) {
+                        echo 'test';
                         $category = lcfirst($_GET['category']);
 
-                        $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'].'&search='.$_GET['search'];
-
+                        if (isset($_GET['search']))
+                            $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'].'&search='.$_GET['search'];
+                        else
+                            $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'];
+                        
                         $category = $product_info['category'];
                         $category = strtolower($category);
                         $category = str_replace(' ', '-', $category);
