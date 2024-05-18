@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang='en'>
-
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <title>Drip & Sip - Products Control</title>
+    <meta charset="UTF-8">
+    <title>Drip & Sip - Blogs Control</title>
 
     <link rel='stylesheet' href='./css/header.css'>
     <link rel='stylesheet' href='./css/output.css'>
@@ -15,7 +14,7 @@
     <div class='hidden'>
         <div class='main-section flex flex-col justify-start gap-[15px] size-full'>
             <input name='id' value='${product.id}' required hidden />
-            <div class='w-full h-[30%]'>
+            <div class='w-full h-[30%] resize-none'>
                 <img class='object-contain size-full' src='../assets/coffee-products/${product.image_path}' />
             </div>
             
@@ -103,21 +102,30 @@
     <section>
         <div class='w-[85%] mx-auto mt-[20px]'>
             <div class='top-text'>
-                <span class='text-3xl text-black font-bold'>Products</span>
+                <span class='text-3xl text-black font-bold'>Blogs</span>
             </div>
 
             <div class='w-full flex flex-row justify-between mt-[20px]'>
-                <div class='products-section w-[70%] flex justify-start flex-wrap gap-y-[20px] gap-[10px] mb-[50px]'>
+                <div class='blogs-section w-[70%] flex justify-start flex-wrap gap-y-[20px] gap-[10px] mb-[50px]'>
+                    
                 </div>
 
                 <div class='logs w-[25%] flex flex-col gap-[30px] box-border px-[10px]'>
+                    <div class='w-full min-h-[150px] bg-white box-border px-[10px] py-[25px] flex flex-col gap-[25px] rounded-[15px]'>
+                        <div class='w-full h-[25%]'>
+                            <span class='title font-bold text-2xl'>${title}</span>
+                        </div>
+                        <div>
+                            <span class='description text-xl'>${content}</span>
+                        </div>
+                    </div>
                 </div>
             </div> 
         </div>
     </section>
 
-    <script src='./js/jq.js'></script>
-    <script src='./js/product_page.js'></script>
+    <script src="./js/jq.js"></script>
+    <script src="./js/blogs_page.js"></script>
 </body>
 
 </html>

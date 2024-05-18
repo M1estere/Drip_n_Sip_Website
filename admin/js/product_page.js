@@ -9,7 +9,7 @@ $(document).ready(function() {
             success: function (response) {
                 let products = [];
                 for (let product of response.data) {
-                    let userData = {
+                    let productData = {
                         id: product['id'],
                         type: product['type'],
                         name: product['name'],
@@ -18,7 +18,7 @@ $(document).ready(function() {
                         image_path: product['picture']
                     }
 
-                    products.push(userData);
+                    products.push(productData);
                 }
 
                 showProducts(products);
@@ -126,7 +126,7 @@ $(document).ready(function() {
 
     function createLogMessage(title, content) {
         let log = document.createElement("div");
-        log.classList.add('w-full', 'min-h-[150px]', 'bg-white', 'box-border', 'px-[10px]', 'py-[25px]', 'flex', 'flex-col', 'gap-[25px]');
+        log.classList.add('w-full', 'min-h-[150px]', 'bg-white', 'box-border', 'px-[10px]', 'py-[25px]', 'flex', 'flex-col', 'gap-[25px]', 'rounded-[15px]');
         log.innerHTML = `
             <div class='w-full h-[25%]'>
                 <span class='title font-bold text-2xl'>${title}</span>
