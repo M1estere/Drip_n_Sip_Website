@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+    width: 90%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cards-section {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.card {
+    background-color: white;
+    width: 30%;
+    min-height: 500px;
+    border-radius: 15px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.card-edit-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.card-image-container {
+    width: 50%;
+    height: 25%;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-fields {
+    width: 100%;
+}
+
+.card-fields-content div {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-fields-content div span {
+    font-size: 20px;
+    color: black;
+}
+
+.card-fields-content input {
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.card-fields-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logs-section {
+    width: 25%;
+    background-color: aqua;
+}
+
+.log-block {
+    background-color: rgba(0, 128, 0, 0.65);
+    width: 100%;
+    height: 120px;
+
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
