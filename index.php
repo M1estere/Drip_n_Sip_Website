@@ -363,9 +363,9 @@
                             <div class='blog'>
                                 <img src=$picture_path>
                                 <div class='info'>
-                                    <p id='reg' data-i18='$key_to_check'>$title</p>
+                                    <p id='reg'>$title</p>
                                     <span class='colored'>$blog_date</span><br>
-                                    <span class='reg' data-i18='$desc_key'>$text</span>
+                                    <span class='reg'>$text</span>
                                 </div>
                             </div>
                         ";

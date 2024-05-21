@@ -28,15 +28,15 @@
                 <?php
                     include 'server/search_product.php';
 
-                    $products = search($_GET['category']);
+                    $category = isset($_GET['category']) ? $_GET['category'] : '';
+                    $products = search($category);
                     foreach ($products as $name => $product_info) {
-                        echo 'test';
-                        $category = lcfirst($_GET['category']);
+                        $category = lcfirst($category);
 
                         if (isset($_GET['search']))
-                            $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'].'&search='.$_GET['search'];
+                            $link = '?product_id='.$product_info['id'].'&category='.$category.'&search='.$_GET['search'];
                         else
-                            $link = '?product_id='.$product_info['id'].'&category='.$_GET['category'];
+                            $link = '?product_id='.$product_info['id'].'&category='.$category;
                         
                         $category = $product_info['category'];
                         $category = strtolower($category);
@@ -63,7 +63,7 @@
                                     <img src='$picture_path'>
                                 </div>
                                 <div class='info'>
-                                    <p align='center' data-i18='$key_to_check'>$product_name</p>
+                                    <p align='center'>$product_name</p>
                                     <div class='outer'>
                                         <a href='$link'>
                                             <img src='assets/icons/simple/shop_brown.png'>
@@ -72,7 +72,7 @@
                                             <span id='price'>$price</span>
                                             <div>
                                                 <span id='calories'>{$calories}</span>
-                                                <span id='calories' data-i18='cal-title'>cal</span>
+                                                <span id='calories'>cal</span>
                                             </div>
                                         </div>
                                     </div>

@@ -107,12 +107,11 @@ $(document).ready(function() {
             success: function (response) {
                 let title = response.message;
                 let message = `
-                    old id: ${response.data.id} <br>
-                    old name: ${response.data.name} <br>
-                    old type: ${response.data.type} <br>
-                    old price: ${response.data.price} <br>
-                    old calories: ${response.data.calories} <br>
-                    old picture: ${response.data.picture}  
+                    name: ${response.data.name} > ${response.new_data.name} <br>
+                    type: ${response.data.type} > ${response.new_data.category} <br>
+                    price: ${response.data.price} > ${response.new_data.price} <br>
+                    calories: ${response.data.calories} > ${response.new_data.calories} <br>
+                    picture: ${response.data.picture} > ${response.new_data.picture} 
                 `;
 
                 createLogMessage(title, message);

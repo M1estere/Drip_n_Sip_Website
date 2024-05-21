@@ -32,6 +32,7 @@ function edit_product($new_data) {
     $calories = $new_data['calories'];
     $image_path = $new_data['picture'];
 
+    $result['new_data'] = $new_data;
     $result['data'] = get_product_by_id($id);
     $query = "UPDATE products SET name = '$name', type = '$category', price = $price, calories = $calories, picture = '$image_path' WHERE id = $id;";
     $result_query = mysqli_query($server_connection, $query);

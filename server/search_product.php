@@ -3,7 +3,7 @@
 
     include 'db_connection.php';
 
-    function search($category) {
+    function search($category = '') {
         global $server_connection;
 
         $result_array = array();
